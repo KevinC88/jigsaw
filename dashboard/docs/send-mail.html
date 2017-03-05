@@ -78,7 +78,7 @@
     <article class="asciidoctor">
       <h1>Send Mail with PHP</h1>
 <div class="paragraph">
-<p>If you&#8217;re a PHP application developer, you might need to send email notifications through your custom PHP applications. With XAMPP, there are two ways to do this: you can use the included <em>sendmail.exe</em> binary, or you can use the third-party <a href="http://phpmailer.worxware.com/">PHPMailer</a> class. This guide walks you through both options.</p>
+<p>If you&#8217;re a PHP application developer, you might need to send email notifications through your custom PHP applications. With XAMPP, there are two ways to do this: you can use a simple SMTP client like <a href="http://msmtp.sourceforge.net/">msmtp</a>, or you can use the third-party <a href="http://phpmailer.worxware.com/">PHPMailer</a> class. This guide walks you through both options.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -93,28 +93,34 @@ This guide assumes that you have an existing Gmail account, and that you will us
 </table>
 </div>
 <div class="paragraph">
-<p>To configure XAMPP to use <em>sendmail.exe</em> for email notifications, follow these steps:</p>
+<p>To configure XAMPP to use <em>msmtp</em> for email notifications, follow these steps:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Edit the <em>php.ini</em> file in the <em>php\</em> subdirectory of your XAMPP installation directory (usually, <em>C:\xampp</em>). Within this file, find the [mail function] section and replace it with the following directives:</p>
+<p>Ensure that you are logged in as an administrator. Install the <em>msmtp</em> package.</p>
 <div class="literalblock">
 <div class="content">
-<pre>sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t"</pre>
+<pre>brew install msmtp</pre>
 </div>
 </div>
 </li>
 <li>
-<p>Edit the <em>sendmail.ini</em> file in the <em>sendmail\</em> subdirectory of your XAMPP installation directory. Within this file, find the [sendmail] section and replace it with the following directives:</p>
+<p>Create a new file at <em>/etc/msmtprc</em> and fill it with the following configuration directives:</p>
 <div class="literalblock">
 <div class="content">
-<pre>smtp_server=smtp.gmail.com
-smtp_port=465
-smtp_ssl=auto
-error_logfile=error.log
-auth_username=your-gmail-username@gmail.com
-auth_password=your-gmail-password</pre>
+<pre>defaults
+tls on
+tls_starttls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+account default
+host smtp.gmail.com
+port 587
+auth on
+user your-gmail-username@gmail.com
+password your-gmail-password
+from your-gmail-username@gmail.com
+logfile /var/log/msmtp.log</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -126,8 +132,20 @@ auth_password=your-gmail-password</pre>
 </li>
 </ol>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For more information on configuring msmtp to work with Gmail, refer to <a href="http://www.absolutelytech.com/2010/07/17/howto-configure-msmtp-to-work-with-gmail-on-linux/">this source thread</a> or <a href="http://msmtp.sourceforge.net/doc/msmtp.html">the msmtp documentation</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>You can now use PHP&#8217;s <em>mail()</em> function to send email from your application. To illustrate how it can be used with your Gmail account, use your text editor to create an example script named <em>sendmail.php</em> in the <em>htdocs\</em> subdirectory and fill it with the following code. Once done, save your changes.</p>
+<p>You can now use PHP&#8217;s <em>mail()</em> function to send email from your application. To illustrate how it can be used with your Gmail account, use your text editor to create an example script named <em>sendmail.php</em> in the <em>htdocs/</em> subdirectory and fill it with the following code. Once done, save your changes.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -168,7 +186,7 @@ if (mail($to, $subject, $message, $headers)) {
 </div>
 </li>
 <li>
-<p>Create a directory for your new application within the <em>htdocs\</em> subdirectory of your XAMPP installation directory. In this tutorial, the application directory is named <em>example\</em>.</p>
+<p>Create a directory for your new application within the <em>htdocs/</em> subdirectory of your XAMPP installation directory. In this tutorial, the application directory is named <em>example/</em>.</p>
 </li>
 <li>
 <p>Extract the contents of the PHPMailer ZIP archive to the application directory.</p>

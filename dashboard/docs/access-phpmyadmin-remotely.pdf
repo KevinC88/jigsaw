@@ -75,7 +75,7 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Edit the <em>apache/conf/extra/httpd-xampp.conf</em> file in your XAMPP installation directory (usually, <em>C:\xampp</em>).</p>
+<p>Edit the <em>etc/extra/httpd-xampp.conf</em> file in your XAMPP installation directory (usually, <em>/Applications/XAMPP</em>).</p>
 </li>
 <li>
 <p>Within this file, find the line below:</p>
