@@ -36,7 +36,7 @@
     <?php
   $server = mysql_connect("localhost", "root", ""); 
   $db = mysql_select_db("test-login", $server); 
-  $query = mysql_query("SELECT patientsNumber,Haemoglobin, Platelets, WhiteCells, HCT, MCV,MCH,Neuts,Lymphs,Eosins,Basos,Mono FROM patients WHERE testTypeInput=1;"); 
+  $query = mysql_query("SELECT patientsNumber FROM patients"); 
 ?>
  
     
@@ -122,12 +122,12 @@
 					<div class="row">
 						<div class="col-md-12">
                            <ul class="nav nav-tabs">
-  <li class="active"><a href="#">Full Blood Count</a></li> 
-   <li><a href="test.php">Patient Info</a></li>                         
+  <li class="active"><a href="fullBloodCount.php">Full Blood Count</a></li> 
+   <li><a href="test.php">Patient Information</a></li>                         
                             
                           <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Full Blood Count</h3>
+    <h3 class="panel-title">Patient Information</h3>
   </div>
   <div class="panel-body">
     
@@ -137,17 +137,7 @@
 <thead>
 <tr>
                 <td>Patients Number</td>
-                <td>Haemoglobin</td>
-                <td>Platelets</td>
-                <td>WhiteCells</td>
-                <td>HCT</td>
-                <td>MCV</td>
-                <td>MCH</td>
-                <td>Neuts</td>
-                <td>Lymphs</td>
-                <td>Eosins</td>
-                <td>Basos</td>
-                <td>Mono</td>
+                
                 
     
 </tr>
@@ -156,17 +146,7 @@
                while ($row = mysql_fetch_array($query)) {?>
                    <tr>
                   <td><?php echo $row['patientsNumber'];?></td>
-                   <td><?php echo $row['Haemoglobin'];?></td>
-                   <td><?php echo $row['Platelets'];?></td>
-                   <td><?php echo $row['WhiteCells'];?></td>
-                   <td><?php echo $row['HCT'];?></td>
-                   <td><?php echo $row['MCV'];?></td>
-                   <td><?php echo $row['MCH'];?></td>
-                   <td><?php echo $row['Neuts'];?></td>
-                   <td><?php echo $row['Lymphs'];?></td>
-                   <td><?php echo $row['Eosins'];?></td>
-                   <td><?php echo $row['Basos'];?></td>
-                   <td><?php echo $row['Mono'];?></td>
+                 
                    </tr>
               <?php  } ?>
 </table>
