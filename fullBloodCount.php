@@ -30,14 +30,42 @@
         body { background: url(css/bglight.png); }
         .center { display: block; margin: 0 auto; }
     </style>
-
+    
+    ///////////////
+    <script>
+function showUser(str) {
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else { 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","getuser.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+</script>
+//////////////////////////
 </head>
 <body>
     <?php
   $server = mysql_connect("localhost", "root", ""); 
   $db = mysql_select_db("test-login", $server); 
-  $query = mysql_query("SELECT patientsNumber, patientsFirstName, patientsLastName, supervisingPsych, clinicName, addressLine1,addressLine2,cityInput,countyInput,contactInput,bloodTypeInput FROM patients"); 
+  $query = mysql_query("SELECT patientsNumber,Haemoglobin, Platelets, WhiteCells, HCT, MCV,MCH,Neuts,Lymphs,Eosins,Basos,Mono FROM patientRecord"); 
 ?>
+ 
+    
+  
      <div class="page-container">
   
 	<!-- top navbar -->
@@ -112,55 +140,77 @@
         </div>
   	
         <!-- main area -->
+          
         <div class="col-xs-12 col-sm-9">
         
     <div class="col-md-12">
 					<div class="row">
 						<div class="col-md-12">
-                            <div class="panel panel-default">
+                           <ul class="nav nav-tabs">
+  <li class="active"><a href="#">Full Blood Count</a></li> 
+   <li><a href="test.php">Patient Info</a></li>                         
+                            
+                          <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
+    <h3 class="panel-title">Full Blood Count</h3>
   </div>
   <div class="panel-body">
+    
+     
 							<div class="table-repsonsive">
 <table id="patient_data" class="table table-bordered" data-page-length='5'>
 <thead>
 <tr>
-                <td>Patient's Number</td>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Supervising Psychiatrist</td>
-                <td>Clinic</td>
-                <td>Address line 1</td>
-                <td>Address line 2</td>
-                <td>City</td>
-                <td>County</td>
-                <td>Contact</td>
-                <td>Blood type</td>
+                <td>Patients Number</td>
+                <td>Haemoglobin</td>
+                <td>Platelets</td>
+                <td>WhiteCells</td>
+                <td>HCT</td>
+                <td>MCV</td>
+                <td>MCH</td>
+                <td>Neuts</td>
+                <td>Lymphs</td>
+                <td>Eosins</td>
+                <td>Basos</td>
+                <td>Mono</td>
+                
+    
 </tr>
 </thead>
   <?php
                while ($row = mysql_fetch_array($query)) {?>
                    <tr>
-                   <td><?php echo $row['patientsNumber'];?></td>
-                   <td><?php echo $row['patientsFirstName'];?></td>
-                   <td><?php echo $row['patientsLastName'];?></td>
-                   <td><?php echo $row['supervisingPsych'];?></td>
-                   <td><?php echo $row['clinicName'];?></td>
-                   <td><?php echo $row['addressLine1'];?></td>
-                   <td><?php echo $row['addressLine2'];?></td>
-                   <td><?php echo $row['cityInput'];?></td>
-                   <td><?php echo $row['countyInput'];?></td>
-                   <td><?php echo $row['contactInput'];?></td>
-                   <td><?php echo $row['bloodTypeInput'];?></td>
+                  <td><?php echo $row['patientsNumber'];?></td>
+                   <td><?php echo $row['Haemoglobin'];?></td>
+                   <td><?php echo $row['Platelets'];?></td>
+                   <td><?php echo $row['WhiteCells'];?></td>
+                   <td><?php echo $row['HCT'];?></td>
+                   <td><?php echo $row['MCV'];?></td>
+                   <td><?php echo $row['MCH'];?></td>
+                   <td><?php echo $row['Neuts'];?></td>
+                   <td><?php echo $row['Lymphs'];?></td>
+                   <td><?php echo $row['Eosins'];?></td>
+                   <td><?php echo $row['Basos'];?></td>
+                   <td><?php echo $row['Mono'];?></td>
                    </tr>
               <?php  } ?>
 </table>
 </div>
+      
+
+          
+          
                                 </div>
-                            </div>
+                              
+                            </div>  
                             
+                            
+         
 						</div>
+                        </div>
+                        </ul>
+                        
+                        
 						<div class="col-md-12" style='background-color: #2ba6cb;'>
 							<form action="inputFBC.php" class="form-horizontal" id="contactForm" method="post" name="contactForm" role="form">
 								<fieldset>
@@ -171,6 +221,9 @@
 											<input autocomplete="off" class="form-control input-md" id="patientsNumber" name="patientsNumber" placeholder="patient number" required="" type="text" readonly="readonly">
 										</div>
 									</div>
+                               
+ 
+                                   
                                     
                                     	<div class="form-group">
 										<label class="col-md-3 control-label" for="Haemoglobin">Haemoglobin:</label>
@@ -242,6 +295,9 @@
                                           
 									</div>
                                     
+                                          <div>        
+                                    <input name="Record" class="form-control input-md" id="Record" value="FBC" required="" type="hidden" >
+                                 </div>
                                     
                                     
                                     
@@ -251,6 +307,8 @@
 											<button class="btn btn-primary" id="submit" name="submit" type="submit">Add FBC Record</button>
 										</div>
 									</div>
+                                    
+                                    
 								</fieldset>
 							</form>
 						</div>
@@ -268,7 +326,11 @@
 </html>
 
 <script>
+    
+    
 $(document).ready(function(){
+    
+   
     
     $('#patient_data').DataTable({
         
@@ -278,8 +340,10 @@ $(document).ready(function(){
         
     });
     
-});
     
+});
+
+
 
  
 $(document).ready(function () {
@@ -290,4 +354,6 @@ $(document).ready(function () {
         });
     });
 });
+    
+    
 </script>

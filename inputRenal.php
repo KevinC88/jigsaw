@@ -15,26 +15,24 @@ $Sodium =$_POST['Sodium'];
 $Potassium =$_POST['Potassium'];
 $Urea =$_POST['Urea'];
 $Creatinine =$_POST['Creatinine'];
-
+$Record =$_POST['Record'];
   
     
 
-$renal = "INSERT INTO Renal
+$renal = "INSERT INTO patientRecord
 
-        (patientsNumber,Sodium,Potassium,Urea,Creatinine)
+        (patientsNumber,Sodium,Potassium,Urea,Creatinine,Record)
 
         VALUES
 
-        ('".$patientsNumber."','".$Sodium."','".$Potassium."','".$Urea."','".$Creatinine."')";
+        ('".$patientsNumber."','".$Sodium."','".$Potassium."','".$Urea."','".$Creatinine."','".$Record."')";
 
 
 $result = mysql_query($renal);
 
 if($result){
 
-    header("Location:dashboard.php");
-    
-    die("Redirecting to dashboard.php");
+    echo("<br>Input data is succeed");
 
 } else{
 

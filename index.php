@@ -82,7 +82,7 @@
       <a class="brand">Project name</a>
       <div class="nav-collapse collapse">
         <ul class="nav pull-right">
-          <li hidden><a href="register.php">Register</a></li>
+          <li><a href="register.php">Register</a></li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Log In <strong class="caret"></strong></a>

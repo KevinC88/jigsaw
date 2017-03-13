@@ -22,25 +22,23 @@ $Lymphs =$_POST['Lymphs'];
 $Eosins =$_POST['Eosins'];
 $Basos =$_POST['Basos'];
 $Mono =$_POST['Mono'];
-  
+ $Record =$_POST['Record'];
     
 
-$fbc = "INSERT INTO FBC
+$fbc = "INSERT INTO patientRecord
 
-        (patientsNumber,Haemoglobin,Platelets,WhiteCells,HCT,MCV,MCH,Neuts,Lymphs,Eosins,Basos,Mono)
+        (patientsNumber,Haemoglobin,Platelets,WhiteCells,HCT,MCV,MCH,Neuts,Lymphs,Eosins,Basos,Mono,Record)
 
         VALUES
 
-        ('".$patientsNumber."','".$Haemoglobin."','".$Platelets."','".$WhiteCells."','".$HCT."','".$MCV."','".$MCH."','".$Neuts."','".$Lymphs."','".$Eosins."','".$Basos."','".$Mono."')";
+        ('".$patientsNumber."','".$Haemoglobin."','".$Platelets."','".$WhiteCells."','".$HCT."','".$MCV."','".$MCH."','".$Neuts."','".$Lymphs."','".$Eosins."','".$Basos."','".$Mono."','".$Record."')";
 
 
 $result = mysql_query($fbc);
 
 if($result){
 
-    header("Location:dashboard.php");
-    
-    die("Redirecting to dashboard.php");
+    echo("<br>Input data is succeed");
 
 } else{
 

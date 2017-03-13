@@ -155,9 +155,6 @@
                    <td><?php echo $row['contactInput'];?></td>
                    <td><?php echo $row['bloodTypeInput'];?></td>
                    </tr>
-    
-  
-    
               <?php  } ?>
 </table>
 </div>

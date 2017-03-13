@@ -32,9 +32,7 @@ $result = mysql_query($lipids);
 
 if($result){
 
-    header("Location:dashboard.php");
-    
-    die("Redirecting to dashboard.php");
+    echo("<br>Input data is succeed");
 
 } else{
 

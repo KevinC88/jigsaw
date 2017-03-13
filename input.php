@@ -20,25 +20,24 @@ $addressLine2 =$_POST['addressLine2'];
 $cityInput =$_POST['cityInput'];
 $countyInput =$_POST['countyInput'];
 $contactInput =$_POST['contactInput'];
-$bloodTypeInput =$_POST['bloodTypeInput'];    
+$Record =$_POST['Record'];
+   
     
 
-$patient = "INSERT INTO patients
+$patient = "INSERT INTO patientRecord
 
-        (patientsNumber,patientsFirstName,patientsLastName,supervisingPsych,clinicName,addressLine1,addressLine2,cityInput,countyInput,contactInput,bloodTypeInput)
+        (patientsNumber,patientsFirstName,patientsLastName,supervisingPsych,clinicName,addressLine1,addressLine2,cityInput,countyInput,contactInput,Record)
 
         VALUES
 
-        ('".$patientsNumber."','".$patientsFirstName."','".$patientsLastName."','".$supervisingPsych."','".$clinicName."','".$addressLine1."','".$addressLine2."','".$cityInput."','".$countyInput."','".$contactInput."','".$bloodTypeInput."')";
+        ('".$patientsNumber."','".$patientsFirstName."','".$patientsLastName."','".$supervisingPsych."','".$clinicName."','".$addressLine1."','".$addressLine2."','".$cityInput."','".$countyInput."','".$contactInput."','".$Record."')";
 
 
 $result = mysql_query($patient);
 
 if($result){
 
-    header("Location:dashboard.php");
-    
-    die("Redirecting to dashboard.php");
+    echo("<br>Input data is succeed");
 
 } else{
 

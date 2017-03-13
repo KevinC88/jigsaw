@@ -1,0 +1,59 @@
+ // Order by the grouping
+    $('#patient_data tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 0, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 0, 'asc' ] ).draw();
+        }
+        
+    });
+    
+    
+    
+     
+$(document).ready(function () {
+    $("td", this).on("click", function () {
+        var tds = $(this).parents("tr").find("td");
+        $.each(tds, function (i, v) {
+            $($("#patientsNumber")[i]).val($(v).text());
+        });
+    });
+});
+
+
+// Order by the grouping
+    $('#patient_data tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 0, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 0, 'asc' ] ).draw();
+        }
+        
+    });
+    
+    
+    
+    
+    // This code goes below columns def and make the row line appear using patientNumber
+    
+      "order": [[ 0, 'asc' ]],
+        "displayLength": 25,
+        "drawCallback": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
+ 
+            api.column(0, {page:'current'} ).data().each( function ( group, i ) {
+                if ( last !== group ) {
+                    $(rows).eq( i ).before(
+                        '<tr class="group"><td colspan="25">'+group+'</td></tr>'
+                    );
+ 
+                    last = group;
+                }
+            } );
+        }

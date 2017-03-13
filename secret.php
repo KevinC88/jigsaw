@@ -188,18 +188,15 @@
                                  <div class="col-md-4">
                                     <input name="contactInput" class="form-control input-md" id="contactInput" required="" type="text" placeholder="home/mobile" autocomplete="off">
                                  </div>
-                              </div>
-                              <!-- Select Basic -->
-                              <div class="form-group">
-                                 <label class="col-md-4 control-label" for="bloodTypeInput">Blood Type:</label>
-                                 <div class="col-md-4">
-                                    <select name="bloodTypeInput" class="form-control" id="bloodTypeInput">
-                                       <option value="1">NOT SELECTED</option>
-                                       <option value="2">A+</option>
-                                       <option value="3">O-</option>
-                                    </select>
+                              </div> 
+                                 <div class="col-md-8">
+                                   <div>        
+                                    <input name="Record" class="form-control input-md" id="Record" value="Registration" required="" type="hidden" >
                                  </div>
-                              </div>
+                            
+          
+                              <!-- Select Basic -->
+                              
                               <!-- Button -->
                               <div class="form-group">
                                  <label class="col-md-4 control-label" for="createPatientBtn"></label>

@@ -36,7 +36,7 @@
       <?php
   $server = mysql_connect("localhost", "root", ""); 
   $db = mysql_select_db("test-login", $server); 
-  $query = mysql_query("SELECT patientsNumber, patientsFirstName, patientsLastName, supervisingPsych, clinicName, addressLine1,addressLine2,cityInput,countyInput,contactInput,bloodTypeInput FROM patients"); 
+  $query = mysql_query("SELECT patientsNumber, patientsFirstName, patientsLastName FROM patientRecord"); 
 ?>
 
      <div class="page-container">
@@ -131,14 +131,6 @@
                 <td>Patient's Number</td>
                 <td>First Name</td>
                 <td>Last Name</td>
-                <td>Supervising Psychiatrist</td>
-                <td>Clinic</td>
-                <td>Address line 1</td>
-                <td>Address line 2</td>
-                <td>City</td>
-                <td>County</td>
-                <td>Contact</td>
-                <td>Blood type</td>
 </tr>
 </thead>
   <?php
@@ -147,14 +139,6 @@
                    <td><?php echo $row['patientsNumber'];?></td>
                    <td><?php echo $row['patientsFirstName'];?></td>
                    <td><?php echo $row['patientsLastName'];?></td>
-                   <td><?php echo $row['supervisingPsych'];?></td>
-                   <td><?php echo $row['clinicName'];?></td>
-                   <td><?php echo $row['addressLine1'];?></td>
-                   <td><?php echo $row['addressLine2'];?></td>
-                   <td><?php echo $row['cityInput'];?></td>
-                   <td><?php echo $row['countyInput'];?></td>
-                   <td><?php echo $row['contactInput'];?></td>
-                   <td><?php echo $row['bloodTypeInput'];?></td>
                    </tr>
               <?php  } ?>
 </table>
@@ -199,7 +183,9 @@
                                             
 									</div>
                                     
-    
+                                    <div>        
+                                    <input name="Record" class="form-control input-md" id="Record" value="Renal" required="" type="hidden" >
+                                 </div>
                                     
                                          	      
                                     
