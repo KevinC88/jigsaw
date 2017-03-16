@@ -29,39 +29,19 @@
     <style type="text/css">
         body { background: url(css/bglight.png); }
         .center { display: block; margin: 0 auto; }
+        
+        table {overflow-y: scroll; }
     </style>
     
-    ///////////////
-    <script>
-function showUser(str) {
-    if (str == "") {
-        document.getElementById("txtHint").innerHTML = "";
-        return;
-    } else { 
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("txtHint").innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","getuser.php?q="+str,true);
-        xmlhttp.send();
-    }
-}
-</script>
-//////////////////////////
+   
+
+
 </head>
 <body>
     <?php
   $server = mysql_connect("localhost", "root", ""); 
   $db = mysql_select_db("test-login", $server); 
-  $query = mysql_query("SELECT patientsNumber,Haemoglobin, Platelets, WhiteCells, HCT, MCV,MCH,Neuts,Lymphs,Eosins,Basos,Mono FROM patientRecord"); 
+  $query = mysql_query("SELECT patientsNumber,patientsFirstName,patientsLastName FROM patientRecord GROUP BY patientsNumber"); 
 ?>
  
     
@@ -146,13 +126,12 @@ function showUser(str) {
     <div class="col-md-12">
 					<div class="row">
 						<div class="col-md-12">
-                           <ul class="nav nav-tabs">
-  <li class="active"><a href="#">Full Blood Count</a></li> 
-   <li><a href="test.php">Patient Info</a></li>                         
+                           
+                        
                             
                           <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Full Blood Count</h3>
+    <h3 class="panel-title">Patient Details</h3>
   </div>
   <div class="panel-body">
     
@@ -162,36 +141,16 @@ function showUser(str) {
 <thead>
 <tr>
                 <td>Patients Number</td>
-                <td>Haemoglobin</td>
-                <td>Platelets</td>
-                <td>WhiteCells</td>
-                <td>HCT</td>
-                <td>MCV</td>
-                <td>MCH</td>
-                <td>Neuts</td>
-                <td>Lymphs</td>
-                <td>Eosins</td>
-                <td>Basos</td>
-                <td>Mono</td>
-                
-    
+    <td>Patients First Name</td>
+    <td>Patients Last Name</td>
 </tr>
 </thead>
   <?php
                while ($row = mysql_fetch_array($query)) {?>
                    <tr>
                   <td><?php echo $row['patientsNumber'];?></td>
-                   <td><?php echo $row['Haemoglobin'];?></td>
-                   <td><?php echo $row['Platelets'];?></td>
-                   <td><?php echo $row['WhiteCells'];?></td>
-                   <td><?php echo $row['HCT'];?></td>
-                   <td><?php echo $row['MCV'];?></td>
-                   <td><?php echo $row['MCH'];?></td>
-                   <td><?php echo $row['Neuts'];?></td>
-                   <td><?php echo $row['Lymphs'];?></td>
-                   <td><?php echo $row['Eosins'];?></td>
-                   <td><?php echo $row['Basos'];?></td>
-                   <td><?php echo $row['Mono'];?></td>
+                       <td><?php echo $row['patientsFirstName'];?></td>
+                       <td><?php echo $row['patientsLastName'];?></td>
                    </tr>
               <?php  } ?>
 </table>
@@ -208,7 +167,7 @@ function showUser(str) {
          
 						</div>
                         </div>
-                        </ul>
+                       
                         
                         
 						<div class="col-md-12" style='background-color: #2ba6cb;'>
@@ -221,9 +180,22 @@ function showUser(str) {
 											<input autocomplete="off" class="form-control input-md" id="patientsNumber" name="patientsNumber" placeholder="patient number" required="" type="text" readonly="readonly">
 										</div>
 									</div>
-                               
- 
-                                   
+                                    
+                                    
+                                    
+                                    	<div class="form-group">
+										<label class="col-md-3 control-label">First:</label>
+										<div class="col-md-3">
+											<input autocomplete="off" class="form-control input-md" id="patientsFirstName" name="patientsFirstName" required="" type="text" readonly="readonly">
+										</div>
+                                            
+                                            <label class="col-md-3 control-label">last:</label>
+										<div class="col-md-3">
+											<input autocomplete="off" class="form-control input-md" id="patientsLastName" name="patientsLastName"  required="" type="text" readonly="readonly">
+										</div>
+									</div>
+                                    
+                                                        
                                     
                                     	<div class="form-group">
 										<label class="col-md-3 control-label" for="Haemoglobin">Haemoglobin:</label>
@@ -332,11 +304,13 @@ $(document).ready(function(){
     
    
     
-    $('#patient_data').DataTable({
+  var table = $('#patient_data').DataTable({
         
         "scrollX":true,
+        "bPaginate": false,
         
-        
+   
+     
         
     });
     
