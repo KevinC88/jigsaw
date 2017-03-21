@@ -29,6 +29,20 @@
     <style type="text/css">
         body { background: url(css/bglight.png); }
         .center { display: block; margin: 0 auto; }
+        tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
+} 
+   table{
+  margin: 0 auto;     
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+  table-layout: fixed; 
+  word-wrap:break-word; 
+}     
+       
     </style>
 
 </head>
@@ -36,7 +50,7 @@
       <?php
   $server = mysql_connect("localhost", "root", ""); 
   $db = mysql_select_db("test-login", $server); 
-  $query = mysql_query("SELECT patientsNumber, patientsFirstName, patientsLastName, supervisingPsych, clinicName, addressLine1,addressLine2,cityInput,countyInput,contactInput,bloodTypeInput FROM patients"); 
+ $query = mysql_query("SELECT patientsNumber, patientsFirstName, patientsLastName FROM patientRecord GROUP BY patientsNumber");
 ?>
 	<div class="page-container">
   
@@ -128,14 +142,7 @@
                 <td>Patient's Number</td>
                 <td>First Name</td>
                 <td>Last Name</td>
-                <td>Supervising Psychiatrist</td>
-                <td>Clinic</td>
-                <td>Address line 1</td>
-                <td>Address line 2</td>
-                <td>City</td>
-                <td>County</td>
-                <td>Contact</td>
-                <td>Blood type</td>
+                
 </tr>
 </thead>
   <?php
@@ -144,14 +151,7 @@
                    <td><?php echo $row['patientsNumber'];?></td>
                    <td><?php echo $row['patientsFirstName'];?></td>
                    <td><?php echo $row['patientsLastName'];?></td>
-                   <td><?php echo $row['supervisingPsych'];?></td>
-                   <td><?php echo $row['clinicName'];?></td>
-                   <td><?php echo $row['addressLine1'];?></td>
-                   <td><?php echo $row['addressLine2'];?></td>
-                   <td><?php echo $row['cityInput'];?></td>
-                   <td><?php echo $row['countyInput'];?></td>
-                   <td><?php echo $row['contactInput'];?></td>
-                   <td><?php echo $row['bloodTypeInput'];?></td>
+                
                    </tr>
               <?php  } ?>
 </table>
@@ -170,6 +170,18 @@
 											<input autocomplete="off" class="form-control input-md" id="patientsNumber" name="patientsNumber" placeholder="patient number" required="" type="text" readonly="readonly">
 										</div>
 									</div>
+                                    
+                                     <div class="form-group">
+										<label class="col-md-1 control-label" for="patientsFirstNameInput">First Name:</label>
+										<div class="col-md-3">
+											<input autocomplete="off" class="form-control input-md" id="patientsFirstName" name="patientsFirstName" placeholder="first name" readonly required="" type="text">
+										</div><label class="col-md-1 control-label" for="patientLastNameInput">Last Name:</label>
+										<div class="col-md-4">
+											<input autocomplete="off" class="form-control input-md" id="patientsLastName" name="patientsLastName" placeholder="last name" readonly required="" type="text">
+										</div>
+									</div>
+                                    
+                                    
                                     
                                     	<div class="form-group">
 										<label class="col-md-3 control-label" for="Cholesterol">Cholesterol:</label>
@@ -242,26 +254,23 @@
 </body>
 </html>
 <script>
-$(document).ready(function(){
-    
-    $('#patient_data').DataTable({
-        
-        "scrollX":true,
-        
-        
-        
-    });
-    
+$(document).ready(function() {
+	var table = $('#patient_data').DataTable({
+		 "autoWidth": false,
+        dom: 'Bfrtip',
+       fixedHeader: true,
+       "paging":   false,
+	});
 });
     
 
  
-$(document).ready(function () {
-    $("td", this).on("click", function () {
-        var tds = $(this).parents("tr").find("td");
-        $.each(tds, function (i, v) {
-            $($("#patientsNumber")[i]).val($(v).text());
-        });
-    });
-});
+$(document).ready(function() {
+ 	$("td", this).on("click", function() {
+ 		var tds = $(this).parents("tr").find("td");
+ 		$.each(tds, function(i, v) {
+ 			$($(".form-horizontal input")[i]).val($(v).text());
+ 		});
+ 	});
+ });
 </script>

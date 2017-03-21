@@ -27,17 +27,39 @@
     
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/helpful.css" rel="stylesheet">
-    <style type="text/css">
+       
+       
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+       
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+       
+        <style type="text/css">
         body { background: url(css/bglight.png); }
         .center { display: block; margin: 0 auto; }
+        tr.group,
+tr.group:hover {
+    background-color: #ddd !important;
+}
+} 
+   table{
+  margin: 0 auto;     
+  width: 100%;
+  clear: both;
+  border-collapse: collapse;
+  table-layout: fixed; 
+  word-wrap:break-word; 
+}     
+       
     </style>
-
+       
+       
+       
 </head>
    <body>
            <?php
   $server = mysql_connect("localhost", "root", ""); 
   $db = mysql_select_db("test-login", $server); 
-  $query = mysql_query("SELECT patientsNumber, patientsFirstName, patientsLastName, supervisingPsych, clinicName, addressLine1,addressLine2,cityInput,countyInput,contactInput,bloodTypeInput FROM patients"); 
+  $query = mysql_query("SELECT patientsNumber, patientsFirstName, patientsLastName FROM patientRecord GROUP BY patientsNumber");
 ?>
  <div class="page-container">
   
@@ -129,14 +151,7 @@
                 <td>Patient's Number</td>
                 <td>First Name</td>
                 <td>Last Name</td>
-                <td>Supervising Psychiatrist</td>
-                <td>Clinic</td>
-                <td>Address line 1</td>
-                <td>Address line 2</td>
-                <td>City</td>
-                <td>County</td>
-                <td>Contact</td>
-                <td>Blood type</td>
+               
 </tr>
 </thead>
   <?php
@@ -145,14 +160,7 @@
                    <td><?php echo $row['patientsNumber'];?></td>
                    <td><?php echo $row['patientsFirstName'];?></td>
                    <td><?php echo $row['patientsLastName'];?></td>
-                   <td><?php echo $row['supervisingPsych'];?></td>
-                   <td><?php echo $row['clinicName'];?></td>
-                   <td><?php echo $row['addressLine1'];?></td>
-                   <td><?php echo $row['addressLine2'];?></td>
-                   <td><?php echo $row['cityInput'];?></td>
-                   <td><?php echo $row['countyInput'];?></td>
-                   <td><?php echo $row['contactInput'];?></td>
-                   <td><?php echo $row['bloodTypeInput'];?></td>
+                   
                    </tr>
               <?php  } ?>
 </table>
@@ -161,8 +169,12 @@
                             </div>
                             
 						</div>
+                        
+ 
+                        
+                        
 						<div class="col-md-12" style='background-color: #2ba6cb;'>
-							<form action="inputRenal.php" class="form-horizontal" id="contactForm" method="post" name="contactForm" role="form">
+							<form  action="inputDosage.php" class="form-horizontal" id="contactForm" method="post" name="contactForm" role="form">
 								<fieldset>
 									<legend>Medications</legend>
 									<div class="form-group">
@@ -172,27 +184,35 @@
 										</div>
 									</div>
                                     
+                                          <div class="form-group">
+										<label class="col-md-1 control-label" for="patientsFirstNameInput">First Name:</label>
+										<div class="col-md-3">
+											<input autocomplete="off" class="form-control input-md" id="patientsFirstName" name="patientsFirstName" placeholder="first name" readonly required="" type="text">
+										</div>
+                                              <label class="col-md-1 control-label" for="patientLastNameInput">Last Name:</label> 
+    <div class="col-md-4">
+        <input name="patientsLastName" class="form-control input-md" id="patientsLastName" readonly required="" type="text" placeholder="last name" autocomplete="off">
+    </div>
+									</div>
+                                    
  <div class="form-group">
-  <label lass="col-md-2 control-label" for="sel1">Medication type:</label>
-     <div class="col-md-3">
-  <select class="form-control input-md" id="sel1">
-    <option>1</option>
-    <option>2</option>
-  </select>
-</div>
+  <label lass="col-md-4 control-label" for="sel1">Medication type:</label>
+     <div class="col-md-6">
+   <select id="drugSelect" name="drugSelect" class="selectpicker" data-style="btn-danger" data-width="fit" data-icon="glyphicon-heart"  data-live-search="true">
+       <optgroup label="Class A">
+  <option data-tokens="" value="Clozapine"> Clozapine</option>
+       </optgroup>
+        <optgroup label="Class B">
+  <option data-tokens="" value="Morphine">Morphine</option>
+       </optgroup>
+</select>
+     </div>   
      
-     
-     <label lass="col-md-2 control-label" for="sel1">Medication Name:</label>
-     <div class="col-md-3">
-  <select class="form-control input-md" id="sel1">
-    <option>1</option>
-    <option>2</option>
-  </select>
-</div>
+   
 </div>                                  	<div class="form-group">
 										<label class="col-md-3 control-label" for="psychiatrist">Psychiatrist:</label>
 										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="psychiatrist" name="psychiatrist" placeholder="Psychiatrist" required="" type="text">
+											<input autocomplete="off" class="form-control input-md" id="prescribingPsych" name="prescribingPsych" placeholder="Prescribing Psychiatrist" required="" type="text">
 										</div>
                                             
             
@@ -205,7 +225,7 @@
                                             <label class="col-md-3 control-label" for="date">Start date:</label>
 							<div class="form-group row">
   <div class="col-md-3">
-    <input class="form-control input-md" type="date" value="2016-01-01" id="example-date-input">
+    <input id="dosageDate" name="dosageDate" class="form-control input-md" type="date" value="2016-01-01">
   </div>
 </div>
 									</div>
@@ -217,14 +237,22 @@
 										</div>
                                             
                                             <label class="col-md-3 control-label" for="frequency">Frequency:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Frequency" name="Frequency" placeholder="medication frequency" required="" type="text">
-										</div>
-                                            
+										
+                                           <select id="frequency" name="frequency" class="selectpicker"  data-width="fit"   data-live-search="true">
+       
+  <option data-tokens="" value="daily">daily</option> 
+  <option data-tokens="" value="twiceDaily">twiceDaily</option>
+  <option data-tokens="" value="thriceDaily">thriceDaily</option>
+<option data-tokens="" value="weekly">weekly</option>
+  <option data-tokens="" value="biWeekly">byWeekly</option>
+       
+</select> 
 									</div>
                                     
     
-                                    
+                                    <div>        
+                                    <input name="Record" class="form-control input-md" id="Record" value="Dosage" required="" type="hidden" >
+                                 </div>
                                               
                                     
                                     
@@ -232,11 +260,12 @@
 									<div class="form-group">
 										<label class="col-md-4 control-label" for="addMedBtn"></label>
 										<div class="col-md-4">
-											<button class="btn btn-primary" id="submit" name="submit" type="submit">Add Medication</button>
+											<button class="btn btn-primary" onclick="return checkDose()" id="submit" name="submit" type="submit">Add Medication</button>
 										</div>
 									</div>
 								</fieldset>
 							</form>
+    
 						</div>
 						
 					</div>
@@ -248,12 +277,99 @@
     </div><!--/.row-->
   </div><!--/.container-->
 </div><!--/.page-container-->
+                       <script>
+function checkDose(){
+var drugSelect = document.getElementById("drugSelect");
+var drugValue = drugSelect.options[drugSelect.selectedIndex].text;
+
+var frequency = document.getElementById("frequency");
+var frequencyValue = frequency.options[frequency.selectedIndex].text;
+
+var dose = document.getElementById("dosage").value;
+
+  switch(drugValue){
+
+case "Clozapine":
+
+			switch(frequencyValue){
       
-     
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 1000){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 500){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 334){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+case "Morphine":
+
+switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 600){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 300){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 200){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+}
+
+}
+</script>        
        
        
-       
-       
+ <script>
+function myFunction() {
+    alert("I am an alert box!");
+}
+</script>
        
       
         
@@ -265,35 +381,30 @@
   });
 });
         </script>
+       
+        
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
    </body>
 </html>
-<script>
-$(document).ready(function(){
-    
-    $('#patient_data').DataTable({
-        
-        "scrollX":true,
-        
-        
-        
-    });
-    
+ <script>
+$(document).ready(function() {
+	var table = $('#patient_data').DataTable({
+		 "autoWidth": false,
+        dom: 'Bfrtip',
+       fixedHeader: true,
+       "paging":   false,
+	});
 });
     
 
  
-$(document).ready(function () {
-    $("td", this).on("click", function () {
-        var tds = $(this).parents("tr").find("td");
-        $.each(tds, function (i, v) {
-            $($("#patientsNumber")[i]).val($(v).text());
-        });
-    });
-});
+$(document).ready(function() {
+ 	$("td", this).on("click", function() {
+ 		var tds = $(this).parents("tr").find("td");
+ 		$.each(tds, function(i, v) {
+ 			$($(".form-horizontal input")[i]).val($(v).text());
+ 		});
+ 	});
+ });
 </script>
 
-<script>
-    $(function() {
-        $(".dial").knob();
-    });
-</script>
