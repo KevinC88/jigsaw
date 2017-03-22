@@ -19,7 +19,7 @@ $Record =$_POST['Record'];
   
     
 
-$renal = "INSERT INTO patientRecord
+$renal = "INSERT INTO patientrecord
 
         (patientsNumber,Sodium,Potassium,Urea,Creatinine,Record)
 
