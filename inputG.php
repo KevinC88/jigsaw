@@ -11,18 +11,21 @@ mysql_select_db("$database");
 
 
 $patientsNumber =$_POST['patientsNumber'];
+$patientsFirstName =$_POST['patientsFirstName'];
+$patientsLastName =$_POST['patientsLastName'];
 $glucose =$_POST['glucose'];
+$Record =$_POST['Record'];
 
   
     
 
-$sample = "INSERT INTO glucose
+$sample = "INSERT INTO patientrecord
 
-        (patientsNumber,glucose)
+        (patientsNumber,patientsFirstName,patientsLastName,glucose,Record)
 
         VALUES
 
-        ('".$patientsNumber."','".$glucose."')";
+        ('".$patientsNumber."','".$patientsFirstName."','".$patientsLastName."','".$glucose."','".$Record."')";
 
 
 $result = mysql_query($sample);

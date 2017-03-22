@@ -202,7 +202,10 @@ tr.group:hover {
 </div>
  
 </div>                          	      
-                                    
+                           <div>        
+                                    <input name="Record" class="form-control input-md" id="Record" value="Thyroid" required="" type="hidden" >
+                                 </div>
+                                              
                                     
                                     
 									<div class="form-group">

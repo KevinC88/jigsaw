@@ -11,21 +11,24 @@ mysql_select_db("$database");
 
 
 $patientsNumber =$_POST['patientsNumber'];
+$patientsFirstName =$_POST['patientsFirstName'];
+$patientsLastName =$_POST['patientsLastName'];
 $Cholesterol =$_POST['Cholesterol'];
 $Tryglyceride =$_POST['Tryglyceride'];
 $HDL =$_POST['HDL'];
 $LDL =$_POST['LDL'];
 $CHRatio =$_POST['CHRatio'];
+$Record =$_POST['Record'];
   
     
 
-$lipids = "INSERT INTO Lipids
+$lipids = "INSERT INTO patientrecord
 
-        (patientsNumber,Cholesterol,Tryglyceride,HDL,LDL,CHRatio)
+        (patientsNumber,patientsFirstName,patientsLastName,Cholesterol,Tryglyceride,HDL,LDL,CHRatio,Record)
 
         VALUES
 
-        ('".$patientsNumber."','".$Cholesterol."','".$Tryglyceride."','".$HDL."','".$LDL."','".$CHRatio."')";
+        ('".$patientsNumber."','".$patientsFirstName."','".$patientsLastName."','".$Cholesterol."','".$Tryglyceride."','".$HDL."','".$LDL."','".$CHRatio."','".$Record."')";
 
 
 $result = mysql_query($lipids);

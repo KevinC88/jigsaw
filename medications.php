@@ -271,7 +271,23 @@ tr.group:hover {
 					</div>
 				</div>
     
-                
+              <div id="test" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       <button type="button" class="btn btn-default" id="test" onclick="">Submit</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->  
           
         </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->
@@ -297,8 +313,7 @@ case "Clozapine":
       case "biWeekly":
       case "daily":
        	if(dose > 1000){
-        alert("This dosage exceeds guidelines");
-        return false;
+        return confirm("This dosage of Clozapine breaches the NICE guidelines and HSE protocol\nDo you wish to porceed with this dose?");
         }else{
         document.getElementById("dosageForm").submit();
         }
@@ -364,13 +379,7 @@ switch(frequencyValue){
 }
 </script>        
        
-       
- <script>
-function myFunction() {
-    alert("I am an alert box!");
-}
-</script>
-       
+            
       
         
        

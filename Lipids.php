@@ -217,6 +217,9 @@ tr.group:hover {
 									</div>
                                     
                                          	
+                                     <div>        
+                                    <input name="Record" class="form-control input-md" id="Record" value="Lipids" required="" type="hidden" >
+                                 </div>
                                     
                                         
                                     
