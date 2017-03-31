@@ -7,6 +7,7 @@
    }
    ?>
 
+
 <!doctype html>
 <html lang="en">
    <head>
@@ -20,6 +21,9 @@
 
 <script src="https://cdn.dataTables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+   
+       
+       
     
     
      <script src="css/bootstrap.min.js"></script>
@@ -31,6 +35,34 @@
         body { background: url(css/bglight.png); }
         .center { display: block; margin: 0 auto; }
     </style>
+       <style> /* set the CSS */
+ 
+body { font: 12px Arial;}
+ 
+path { 
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+ 
+.axis path,
+.axis line {
+	fill: none;
+	stroke: grey;
+	stroke-width: 1;
+	shape-rendering: crispEdges;
+}
+ 
+</style>
+       
+       <style>
+           .chart-container {
+               width:640px;
+               height: 600px;
+           }
+       </style>
+       
+    
 
 </head>
    <body>
@@ -110,17 +142,46 @@
         <!-- main area -->
         <div class="col-xs-12 col-sm-9">
           
-    
-                
-          
+           
+ <?php
+ 
+//Connect to our MySQL database using the PDO extension.
+$pdo = new PDO('mysql:host=localhost;dbname=test-login', 'root', '');
+ 
+//Our select statement. This will retrieve the data that we want.
+$sql = "SELECT patientsNumber FROM patientRecord GROUP BY patientsNumber";
+ 
+//Prepare the select statement.
+$stmt = $pdo->prepare($sql);
+ 
+//Execute the statement.
+$stmt->execute();
+ 
+//Retrieve the rows using fetchAll.
+$users = $stmt->fetchAll();
+ 
+?>
+ <form action="data.php" method="post"  onchange="myFunction()">
+<select name="pGraph" id="pGraph">
+    <?php foreach($users as $user): ?>
+        <option value="<?= $user['patientsNumber']; ?>"><?= $user['patientsNumber']; ?></option>
+    <?php endforeach; ?>
+</select>
+</form>
+
+            
+    <input type="button" value="refresh" onclick="refresh()">   
+  <div class="chart-container">
+            <canvas id="myCanvas"></canvas>
+            </div>          
+            
+             
         </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->
   </div><!--/.container-->
 </div><!--/.page-container-->
       
-     
-       
-       
+      
        
        
        
@@ -134,5 +195,30 @@
   });
 });
         </script>
+
+    
+        <script type="text/javascript" src="js/Chart.min.js"></script>
+       <script type="text/javascript" src="js/linegraph.js"></script>
+       
    </body>
 </html>
+   <script>
+       function myFunction() {
+           var e = document.getElementById("pGraph");
+var strUser = e.options[e.selectedIndex].value;
+           
+        $.ajax({
+            url: 'data.php',
+            type: 'POST',
+            data: {var1: strUser},
+            success: function(data) {
+                console.log("success");
+            }
+        });
+            
+
+}
+       
+ </script>  
+
+

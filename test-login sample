@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2017 at 09:22 PM
+-- Generation Time: Mar 22, 2017 at 12:18 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -54,49 +54,18 @@ CREATE TABLE `patientrecord` (
   `Sodium` int(5) NOT NULL,
   `Potassium` int(5) NOT NULL,
   `Urea` int(5) NOT NULL,
-  `Creatinine` int(5) NOT NULL,
-  `ALT` int(5) NOT NULL,
-  `ALP` int(5) NOT NULL,
-  `GGT` int(5) NOT NULL,
-  `Bilirubin` int(5) NOT NULL,
-  `Albumin` int(5) NOT NULL,
-  `Cholesterol` int(5) NOT NULL,
-  `Tryglyceride` int(5) NOT NULL,
-  `HDL` int(5) NOT NULL,
-  `LDL` int(5) NOT NULL,
-  `CHRatio` int(5) NOT NULL,
-  `T3` int(5) NOT NULL,
-  `T4` int(5) NOT NULL,
-  `TSH` int(5) NOT NULL,
-  `glucose` int(5) NOT NULL,
-  `Lithium` int(5) NOT NULL,
-  `Clozapine` int(5) NOT NULL,
-  `SodiumV` int(5) NOT NULL,
-  `prescribingPsych` varchar(15) NOT NULL,
-  `dosageDate` date NOT NULL,
-  `drugSelect` varchar(25) NOT NULL,
-  `dosage` int(8) NOT NULL,
-  `frequency` varchar(15) NOT NULL
+  `Creatinine` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `patientrecord`
 --
 
-INSERT INTO `patientrecord` (`id`, `patientsNumber`, `patientsFirstName`, `patientsLastName`, `supervisingPsych`, `clinicName`, `addressLine1`, `addressLine2`, `cityInput`, `countyInput`, `contactInput`, `Record`, `Added`, `Haemoglobin`, `Platelets`, `WhiteCells`, `HCT`, `MCV`, `MCH`, `Neuts`, `Lymphs`, `Eosins`, `Basos`, `Mono`, `Sodium`, `Potassium`, `Urea`, `Creatinine`, `ALT`, `ALP`, `GGT`, `Bilirubin`, `Albumin`, `Cholesterol`, `Tryglyceride`, `HDL`, `LDL`, `CHRatio`, `T3`, `T4`, `TSH`, `glucose`, `Lithium`, `Clozapine`, `SodiumV`, `prescribingPsych`, `dosageDate`, `drugSelect`, `dosage`, `frequency`) VALUES
-(1, 0, 'John', 'Wall', 'Dr. Muhammad', 'Blackrock', '7 Cow Lane', 'Temple Bar', 'Dublin 2', 'Dublin', 974125543, 'Registrati', '2017-03-22 10:41:57', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '0000-00-00', '', 0, ''),
-(2, 0, 'kk', 'k', 'k', 'k', 'k', 'k', 'k', 'k', 0, 'Registrati', '2017-03-22 10:48:08', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '0000-00-00', '', 0, ''),
-(3, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'FBC', '2017-03-22 11:16:46', 1111, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '0000-00-00', '', 0, ''),
-(5, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Dosage', '2017-03-22 16:26:21', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'fjdkghkgh', '2016-01-01', 'Clozapine', 1001, 'daily'),
-(6, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Dosage', '2017-03-22 16:29:02', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'gggg', '2016-01-01', 'Clozapine', 1001, 'daily'),
-(7, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Dosage', '2017-03-22 16:39:38', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Dr. G', '2016-01-01', 'Clozapine', 2000, 'daily'),
-(8, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Liver', '2017-03-22 19:46:51', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '0000-00-00', '', 0, ''),
-(9, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Lipids', '2017-03-22 19:55:14', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, '', '0000-00-00', '', 0, ''),
-(10, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Thyroid', '2017-03-22 20:00:41', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, '', '0000-00-00', '', 0, ''),
-(11, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Glucose', '2017-03-22 20:04:53', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, '', '0000-00-00', '', 0, ''),
-(12, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Lithium', '2017-03-22 20:13:17', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, '', '0000-00-00', '', 0, ''),
-(13, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Sodium Val', '2017-03-22 20:21:35', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, '', '0000-00-00', '', 0, ''),
-(14, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'Clozapine', '2017-03-22 20:21:52', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, '', '0000-00-00', '', 0, '');
+INSERT INTO `patientrecord` (`id`, `patientsNumber`, `patientsFirstName`, `patientsLastName`, `supervisingPsych`, `clinicName`, `addressLine1`, `addressLine2`, `cityInput`, `countyInput`, `contactInput`, `Record`, `Added`, `Haemoglobin`, `Platelets`, `WhiteCells`, `HCT`, `MCV`, `MCH`, `Neuts`, `Lymphs`, `Eosins`, `Basos`, `Mono`, `Sodium`, `Potassium`, `Urea`, `Creatinine`) VALUES
+(1, 0, 'John', 'Wall', 'Dr. Muhammad', 'Blackrock', '7 Cow Lane', 'Temple Bar', 'Dublin 2', 'Dublin', 974125543, 'Registrati', '2017-03-22 10:41:57', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(2, 0, 'kk', 'k', 'k', 'k', 'k', 'k', 'k', 'k', 0, 'Registrati', '2017-03-22 10:48:08', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(3, 0, 'John', 'Wall', '', '', '', '', '', '', 0, 'FBC', '2017-03-22 11:16:46', 1111, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0),
+(4, 0, '', '', '', '', '', '', '', '', 0, 'Renal', '2017-03-22 11:17:12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -145,7 +114,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `patientrecord`
 --
 ALTER TABLE `patientrecord`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `users`
 --

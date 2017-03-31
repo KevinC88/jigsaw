@@ -195,7 +195,11 @@ tr.group:hover {
                                          	
                                     
                                         
-                                    
+                                         <div>        
+                                    <input name="Record" class="form-control input-md" id="Record" value="Clozapine" required="" type="hidden" >
+                                 </div>
+                                                                    
+
                                     
                                     
                                     

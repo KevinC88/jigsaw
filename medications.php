@@ -199,11 +199,25 @@ tr.group:hover {
   <label lass="col-md-4 control-label" for="sel1">Medication type:</label>
      <div class="col-md-6">
    <select id="drugSelect" name="drugSelect" class="selectpicker" data-style="btn-danger" data-width="fit" data-icon="glyphicon-heart"  data-live-search="true">
-       <optgroup label="Class A">
-  <option data-tokens="" value="Clozapine"> Clozapine</option>
+       <optgroup label="Anti-Psychotics">
+           <option data-tokens="" value="Amisulpride"> Amisulpride</option>
+            <option data-tokens="" value="Aripiprazole"> Aripiprazole</option>
+            <option data-tokens="" value="Chlorpromazine"> Chlorpromazine</option>
+            <option data-tokens="" value="Clozapine"> Clozapine</option>
+            <option data-tokens="" value="Haloperdiol"> Haloperdiol </option>
+            <option data-tokens="" value="Olanzapine"> Olanzapine</option>
+            <option data-tokens="" value="Quetiapine"> Quetiapine</option>
+            <option data-tokens="" value="Paliperidone"> Paliperidone</option>
+            <option data-tokens="" value="Risperidone"> Risperidone </option>
+            <option data-tokens="" value="Sulpiride"> Sulpiride</option>
+            <option data-tokens="" value="Trifluoperazine"> Trifluoperazine</option>
+            <option data-tokens="" value="Zuclopenthixol"> Zuclopenthixol</option>
        </optgroup>
-        <optgroup label="Class B">
-  <option data-tokens="" value="Morphine">Morphine</option>
+        <optgroup label="Mood Stabilizers">
+  <option data-tokens="" value="Lithium">Lithium</option>
+            <option data-tokens="" value="Carbamazepine">Carbamazepine</option>
+            <option data-tokens="" value="Lamotrigine">Lamotrigine</option>
+            <option data-tokens="" value="Sodium Valporate">Sodium Valporate</option>
        </optgroup>
 </select>
      </div>   
@@ -304,8 +318,77 @@ var frequencyValue = frequency.options[frequency.selectedIndex].text;
 var dose = document.getElementById("dosage").value;
 
   switch(drugValue){
+          
+          
+          case "Amisulpride":
 
-case "Clozapine":
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 1200){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 600){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 400){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          case "Aripiprazole":
+
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 30){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 15){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 10){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          case "Chlorpromazine":
 
 			switch(frequencyValue){
       
@@ -313,7 +396,7 @@ case "Clozapine":
       case "biWeekly":
       case "daily":
        	if(dose > 1000){
-        return confirm("This dosage of Clozapine breaches the NICE guidelines and HSE protocol\nDo you wish to porceed with this dose?");
+        return confirm("This dosage exceeds guidelines");
         }else{
         document.getElementById("dosageForm").submit();
         }
@@ -339,23 +422,23 @@ case "Clozapine":
       
       
       }
-case "Morphine":
 
-switch(frequencyValue){
+case "Clozapine":
+
+			switch(frequencyValue){
       
       case "weekly":
       case "biWeekly":
       case "daily":
-       	if(dose > 600){
-        alert("This dosage exceeds guidelines");
-        return false;
+       	if(dose > 900){
+        return confirm("This dosage exceeds guidelines");
         }else{
         document.getElementById("dosageForm").submit();
         }
       break;
       
       case "twiceDaily":
-      	if(dose > 300){
+      	if(dose > 450){
         alert("This dosage exceeds guidelines");
         return false;
         }else{
@@ -364,7 +447,431 @@ switch(frequencyValue){
       break;
       
       case "thriceDaily":
-      	if(dose > 200){
+      	if(dose > 300){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Haloperdiol":
+
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 30){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 15){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 10){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Olanzapine":
+
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 20){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 10){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 7){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Quetiapine":
+
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 800){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 400){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 267){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Paliperidone":
+
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 12){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 6){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 4){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Risperidone":
+
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 16){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 8){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 5.5){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Sulpiride":
+
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 150){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 75){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 50){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Trifluoperazine":
+
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 1000){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 500){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 334){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Zuclopenthixol":
+
+			switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 1000){
+        return confirm("This dosage exceeds guidelines");
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 500){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 334){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+case "Lithium":
+
+switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 1800){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 900){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 600){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Carbamazepine":
+
+switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 1600){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 800){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 533){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Lamotrigine":
+
+switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 1600){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 800){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 533){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      
+      }
+          
+          case "Sodium Valporate":
+
+switch(frequencyValue){
+      
+      case "weekly":
+      case "biWeekly":
+      case "daily":
+       	if(dose > 2000){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "twiceDaily":
+      	if(dose > 1000){
+        alert("This dosage exceeds guidelines");
+        return false;
+        }else{
+        document.getElementById("dosageForm").submit();
+        }
+      break;
+      
+      case "thriceDaily":
+      	if(dose > 666){
         alert("This dosage exceeds guidelines");
         return false;
         }else{
