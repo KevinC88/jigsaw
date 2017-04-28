@@ -9,7 +9,7 @@
 
 <!doctype html>
 <html lang="en">
-   <head>
+  <head>
 <title></title>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -20,40 +20,25 @@
 
 <script src="https://cdn.dataTables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-  <script src="js/jcanvas.min.js"></script>  
+      
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-2.2.4/pdfmake-0.1.18/dt-1.10.13/b-1.2.4/b-colvis-1.2.4/b-html5-1.2.4/b-print-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.1/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.4/pdfmake-0.1.18/dt-1.10.13/b-1.2.4/b-colvis-1.2.4/b-html5-1.2.4/b-print-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.1/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.js"></script>
     
+<script type="text/javascript" src="dataTables.filter.html.js"></script>
+ <script type="text/javascript" src="dataTables.filter.range.js"></script>
+      
+<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"> </script>
+      
+      <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js"> </script>
+      
+      
      <script src="css/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/helpful.css" rel="stylesheet">
-       
-       
-      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-       
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-       
-        <style type="text/css">
-        body { background: url(css/bglight.png); }
-        .center { display: block; margin: 0 auto; }
-        tr.group,
-tr.group:hover {
-    background-color: #ddd !important;
-}
-} 
-   table{
-  margin: 0 auto;     
-  width: 100%;
-  clear: both;
-  border-collapse: collapse;
-  table-layout: fixed; 
-  word-wrap:break-word; 
-}     
-       
-    </style>
-       
-       
-       
+   <link rel="stylesheet" type="text/css" href="css/projectstyle.css">
 </head>
    <body>
            <?php
@@ -72,7 +57,7 @@ tr.group:hover {
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="#">Project Name</a>
+           <a class="navbar-brand" href="#">Jigsaw medical</a>
     	</div>
        </div>
     </div>
@@ -81,7 +66,7 @@ tr.group:hover {
       <div class="row row-offcanvas row-offcanvas-left">
         
         <!-- sidebar -->
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+       <div class="col-xs-4 col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav">
               <li class="active"><a href="dashboard.php">Dashboard</a></li>
               <li><a href="secret.php">Add Patient</a></li>
@@ -112,45 +97,30 @@ tr.group:hover {
 							</li>
 						</ul>
 					</li>
-                <li><a href="medications.php">Medication History</a></li>
-               <li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="">Medical Investigations <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="physical.php">Physical Exam</a>
-							</li>
-							<li>
-								<a href="ecg.php">ECG</a>
-							</li>
-                            <li>
-								<a href="ctmri.php">CT/MRI</a>
-							</li>
-						</ul>
-					</li>
-                <li><a href="graphs.php">Patient Graphs</a></li>
+                <li><a href="medLog.php">Medication History</a></li>
+                <li><a href="auditLog.php">Audit Records</a></li>
                 <li>
 						<a href="logout.php">Log Out</a>
 					</li>
             </ul>
         </div>
-  	
         <!-- main area -->
-        <div class="col-xs-12 col-sm-9">
+        <div class="col-xs-12 col-sm-10 central">
            <div class="col-md-12">
 					<div class="row">
-						<div class="col-md-12">
-                            <div class="panel panel-default">
+						<div class="col-md-12 buffer">
+                            <div class="panel panel-default panel-transparent">
   <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
+    Patient Details
   </div>
   <div class="panel-body">
 							<div class="table-repsonsive">
-<table id="patient_data" class="table table-bordered" data-page-length='5'>
+<table id="patient_data" class="table table-bordered pretty" cellpadding="0" cellspacing = "0" data-page-length='5'>
 <thead>
 <tr>
-                <td>Patient's Number</td>
-                <td>First Name</td>
-                <td>Last Name</td>
+                <th>Patient's Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
                
 </tr>
 </thead>
@@ -165,40 +135,76 @@ tr.group:hover {
               <?php  } ?>
 </table>
 </div>
+                   
+                      
                                 </div>
                             </div>
-                            
-						</div>
+                        </div>
+               </div>
+            </div>
+               <div class="col-md-12 central">
+					<div class="row">
+						<div class="col-md-12">
+                            <div class="panel panel-default panel-transparent">
+  <div class="panel-heading">
+    Medication Entry
+  </div>
+  <div class="panel-body">
                         
- 
-                        
-                        
-						<div class="col-md-12" style='background-color: #2ba6cb;'>
+						
 							<form  action="inputDosage.php" class="form-horizontal" id="contactForm" method="post" name="contactForm" role="form">
 								<fieldset>
-									<legend>Medications</legend>
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="patientsNumbInput">Patient No.:</label>
-										<div class="col-md-6">
-											<input autocomplete="off" class="form-control input-md" id="patientsNumber" name="patientsNumber" placeholder="patient number" required="" type="text" readonly="readonly">
-										</div>
+                                    <label><h4>Select a patient from the table.</h4></label>
+                                    
+									<div class="form-group form-group-sm">
+                                        <div class="col-xs-3">
+										<label for="patientsNumbInput">Patient No.:</label>
+										
+											<input autocomplete="off" class="form-control" id="patientsNumber" name="patientsNumber" placeholder="patient number" required="" type="text" readonly="readonly">
+										
 									</div>
                                     
-                                          <div class="form-group">
-										<label class="col-md-1 control-label" for="patientsFirstNameInput">First Name:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="patientsFirstName" name="patientsFirstName" placeholder="first name" readonly required="" type="text">
-										</div>
-                                              <label class="col-md-1 control-label" for="patientLastNameInput">Last Name:</label> 
-    <div class="col-md-4">
-        <input name="patientsLastName" class="form-control input-md" id="patientsLastName" readonly required="" type="text" placeholder="last name" autocomplete="off">
-    </div>
+                                    
+                                          
+                                              <div class="col-xs-3">
+										<label  for="patientsFirstNameInput">First Name:</label>
+										
+											<input autocomplete="off" class="form-control" id="patientsFirstName" name="patientsFirstName" placeholder="first name" readonly required="" type="text">
+                                              </div>
+                                                   <div class="col-xs-3">
+                                              <label  for="patientLastNameInput">Last Name:</label> 
+    
+        <input name="patientsLastName" class="form-control" id="patientsLastName" readonly required="" type="text" placeholder="last name" autocomplete="off">
+                                              </div>
+    
 									</div>
                                     
- <div class="form-group">
-  <label lass="col-md-4 control-label" for="sel1">Medication type:</label>
-     <div class="col-md-6">
-   <select id="drugSelect" name="drugSelect" class="selectpicker" data-style="btn-danger" data-width="fit" data-icon="glyphicon-heart"  data-live-search="true">
+ 
+   
+     <div class="form-group form-group-sm">
+                                	<div class="col-xs-3">
+										<label for="psychiatrist">Psychiatrist:</label>
+										
+											<input autocomplete="off" class="form-control input-md" id="prescribingPsych" name="prescribingPsych" placeholder="Prescribing Psychiatrist" required="" type="text" pattern="[A-Za-z]*" title="Letters only">
+										
+                                    </div>
+                                            
+                                    
+ 
+									
+                                    
+                                        	
+								<div class="col-xs-3">
+                                            
+                                            <label for="date">Start date:</label>
+    <input id="dosageDate" name="dosageDate" class="form-control input-md" type="date" value="2017-01-01">
+  </div>
+</div>
+                                    <div class="form-group form-group-sm">
+     <div class="col-xs-3">
+  <label  for="sel1">Medication type:</label>
+     
+   <select id="drugSelect" name="drugSelect" class="selectpicker" data-size="5" data-width="fit" data-icon="glyphicon-heart"  data-live-search="true">
        <optgroup label="Anti-Psychotics">
            <option data-tokens="" value="Amisulpride"> Amisulpride</option>
             <option data-tokens="" value="Aripiprazole"> Aripiprazole</option>
@@ -220,93 +226,74 @@ tr.group:hover {
             <option data-tokens="" value="Sodium Valporate">Sodium Valporate</option>
        </optgroup>
 </select>
-     </div>   
-     
-   
-</div>                                  	<div class="form-group">
-										<label class="col-md-3 control-label" for="psychiatrist">Psychiatrist:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="prescribingPsych" name="prescribingPsych" placeholder="Prescribing Psychiatrist" required="" type="text">
-										</div>
-                                            
-            
- 
-									</div>
-                                    
-                                        	<div class="form-group">
-								
-                                            
-                                            <label class="col-md-3 control-label" for="date">Start date:</label>
-							<div class="form-group row">
-  <div class="col-md-3">
-    <input id="dosageDate" name="dosageDate" class="form-control input-md" type="date" value="2016-01-01">
-  </div>
-</div>
-									</div>
-                                    
-                                    	<div class="form-group">
-										<label class="col-md-3 control-label" for="dosage">Dosage:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="dosage" name="dosage" placeholder="dosage" required="" type="text">
-										</div>
-                                            
-                                            <label class="col-md-3 control-label" for="frequency">Frequency:</label>
+     </div>
+                                        
+                                         <div class="col-xs-3">
+                                            <label for="frequency">Frequency:</label>
 										
                                            <select id="frequency" name="frequency" class="selectpicker"  data-width="fit"   data-live-search="true">
        
-  <option data-tokens="" value="daily">daily</option> 
-  <option data-tokens="" value="twiceDaily">twiceDaily</option>
-  <option data-tokens="" value="thriceDaily">thriceDaily</option>
-<option data-tokens="" value="weekly">weekly</option>
-  <option data-tokens="" value="biWeekly">byWeekly</option>
+  <option data-tokens="" value="Daily">Daily</option> 
+  <option data-tokens="" value="Twice Daily">Twice Daily</option>
+  <option data-tokens="" value="Thrice Daily">Thrice Daily</option>
+<option data-tokens="" value="Weekly">Weekly</option>
+  <option data-tokens="" value="Bi Weekly">Bi Weekly</option>
        
 </select> 
 									</div>
+                                    
+									
+                                    
+                                    	 <div class="col-xs-3">
+										<label for="dosage">Dosage:</label>
+										
+											<input autocomplete="off" class="form-control input-md" id="dosage" name="dosage" placeholder="dosage" required="" type="text" maxlength="8" pattern="[0-9,.]*" title="Patient number can only contain numbers and has a max. length of 8 characters">
+										</div>
+                                            
+                                       
+                                    </div>
                                     
     
                                     <div>        
                                     <input name="Record" class="form-control input-md" id="Record" value="Dosage" required="" type="hidden" >
                                  </div>
+                                    
+                                    <div>        
+                                    <input name="Status" class="form-control input-md" id="Status" value="ok" required="" type="hidden" >
+                                 </div>
+                                        
                                               
                                     
                                     
                                     
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="addMedBtn"></label>
-										<div class="col-md-4">
-											<button class="btn btn-primary" onclick="return checkDose()" id="submit" name="submit" type="submit">Add Medication</button>
+									<div class="form-group form-group-sm">
+                                         <div class="col-xs-3">
+                                        </div>
+                                        <div class="col-xs-6">
+										<label  for="addMedBtn"></label>
+										
+											<button class="btn btn-primary btn-block" onclick="return checkDose()" id="submit" name="submit" type="submit">Add Medication</button>
 										</div>
 									</div>
 								</fieldset>
 							</form>
     
-						</div>
 						
-					</div>
-				</div>
-    
-              <div id="test" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       <button type="button" class="btn btn-default" id="test" onclick="">Submit</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->  
-          
-        </div><!-- /.col-xs-12 main -->
-    </div><!--/.row-->
-  </div><!--/.container-->
-</div><!--/.page-container-->
+                        </div>
+                        </div>
+                        
+                        </div>
+               </div>
+            </div>
+            </div>
+          </div>
+        </div>
+     </div>
+       
+    </body>
+            
+       
+        
                        <script>
 function checkDose(){
 var drugSelect = document.getElementById("drugSelect");
@@ -324,30 +311,35 @@ var dose = document.getElementById("dosage").value;
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 1200){
-        return confirm("This dosage exceeds guidelines");
+            document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
+            
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 600){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+        document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 400){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+        document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -358,30 +350,34 @@ var dose = document.getElementById("dosage").value;
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 30){
-        return confirm("This dosage exceeds guidelines");
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 15){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 10){
-        alert("This dosage exceeds guidelines");
-        return false;
+      document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -392,30 +388,34 @@ var dose = document.getElementById("dosage").value;
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 1000){
-        return confirm("This dosage exceeds guidelines");
+      document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 500){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 334){
-        alert("This dosage exceeds guidelines");
-        return false;
+      document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -427,30 +427,34 @@ case "Clozapine":
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 900){
-        return confirm("This dosage exceeds guidelines");
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 450){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 300){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -462,30 +466,34 @@ case "Clozapine":
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 30){
-        return confirm("This dosage exceeds guidelines");
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 15){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 10){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -497,30 +505,34 @@ case "Clozapine":
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 20){
-        return confirm("This dosage exceeds guidelines");
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 10){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 7){
-        alert("This dosage exceeds guidelines");
-        return false;
+      document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -532,30 +544,34 @@ case "Clozapine":
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 800){
-        return confirm("This dosage exceeds guidelines");
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 400){
-        alert("This dosage exceeds guidelines");
-        return false;
+      document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 267){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -567,30 +583,34 @@ case "Clozapine":
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 12){
-        return confirm("This dosage exceeds guidelines");
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 6){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 4){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -602,30 +622,34 @@ case "Clozapine":
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 16){
-        return confirm("This dosage exceeds guidelines");
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 8){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 5.5){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -637,30 +661,34 @@ case "Clozapine":
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 150){
-        return confirm("This dosage exceeds guidelines");
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 75){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 50){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -672,30 +700,34 @@ case "Clozapine":
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 1000){
-        return confirm("This dosage exceeds guidelines");
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 500){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 334){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -707,30 +739,34 @@ case "Clozapine":
 
 			switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 1000){
-        return confirm("This dosage exceeds guidelines");
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 500){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 334){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -742,31 +778,34 @@ case "Lithium":
 
 switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 1800){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 900){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 600){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -778,31 +817,34 @@ switch(frequencyValue){
 
 switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 1600){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 800){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 533){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -814,31 +856,34 @@ switch(frequencyValue){
 
 switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 1600){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 800){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 533){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -850,31 +895,34 @@ switch(frequencyValue){
 
 switch(frequencyValue){
       
-      case "weekly":
-      case "biWeekly":
-      case "daily":
+      case "Weekly":
+      case "Bi Weekly":
+      case "Daily":
        	if(dose > 2000){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "twiceDaily":
+      case "Twice Daily":
       	if(dose > 1000){
-        alert("This dosage exceeds guidelines");
-        return false;
+        document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
       
-      case "thriceDaily":
+      case "Thrice Daily":
       	if(dose > 666){
-        alert("This dosage exceeds guidelines");
-        return false;
+       document.getElementById('Status').value = 'NO';
+        return confirm("This dosage exceeds the recommended guidelines for this medication.\n\nSelect OK if you wish to proceed\n\nSelect CANCEL to alter the dosage.");
         }else{
+            document.getElementById('Status').value = 'OK';
         document.getElementById("dosageForm").submit();
         }
       break;
@@ -900,15 +948,18 @@ switch(frequencyValue){
        
         
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
-   </body>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+   
 </html>
  <script>
 $(document).ready(function() {
 	var table = $('#patient_data').DataTable({
-		 "autoWidth": false,
-        dom: 'Bfrtip',
+		
+        "autoWidth": false,
        fixedHeader: true,
-       "paging":   false,
+       "paging":   true,
+       "bInfo" : false,
 	});
 });
     

@@ -19,15 +19,16 @@ $drugSelect =$_POST['drugSelect'];
 $dosage =$_POST['dosage'];
 $frequency =$_POST['frequency'];
  $Record =$_POST['Record'];
+$Status =$_POST['Status'];
     
 
 $dose = "INSERT INTO patientrecord
 
-        (patientsNumber,patientsFirstName,patientsLastName,prescribingPsych,dosageDate,drugSelect,dosage,frequency,Record)
+        (patientsNumber,patientsFirstName,patientsLastName,prescribingPsych,dosageDate,drugSelect,dosage,frequency,Record,Status)
 
         VALUES
 
-        ('".$patientsNumber."','".$patientsFirstName."','".$patientsLastName."','".$prescribingPsych."','".$dosageDate."','".$drugSelect."','".$dosage."','".$frequency."','".$Record."')";
+        ('".$patientsNumber."','".$patientsFirstName."','".$patientsLastName."','".$prescribingPsych."','".$dosageDate."','".$drugSelect."','".$dosage."','".$frequency."','".$Record."','".$Status."')";
 
 
 $result = mysql_query($dose);

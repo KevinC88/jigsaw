@@ -20,17 +20,22 @@ $addressLine2 =$_POST['addressLine2'];
 $cityInput =$_POST['cityInput'];
 $countyInput =$_POST['countyInput'];
 $contactInput =$_POST['contactInput'];
+$mStatus =$_POST['mStatus'];
+$gender =$_POST['gender'];
+$ageGroup =$_POST['ageGroup'];
+$initialD =$_POST['initialD'];
 $Record =$_POST['Record'];
+
    
     
 
 $patient = "INSERT INTO patientRecord
 
-        (patientsNumber,patientsFirstName,patientsLastName,supervisingPsych,clinicName,addressLine1,addressLine2,cityInput,countyInput,contactInput,Record)
+        (patientsNumber,patientsFirstName,patientsLastName,supervisingPsych,clinicName,addressLine1,addressLine2,cityInput,countyInput,contactInput,mStatus,gender,ageGroup,initialD,Record)
 
         VALUES
 
-        ('".$patientsNumber."','".$patientsFirstName."','".$patientsLastName."','".$supervisingPsych."','".$clinicName."','".$addressLine1."','".$addressLine2."','".$cityInput."','".$countyInput."','".$contactInput."','".$Record."')";
+        ('".$patientsNumber."','".$patientsFirstName."','".$patientsLastName."','".$supervisingPsych."','".$clinicName."','".$addressLine1."','".$addressLine2."','".$cityInput."','".$countyInput."','".$contactInput."','".$mStatus."','".$gender."','".$ageGroup."','".$initialD."','".$Record."')";
 
 
 $result = mysql_query($patient);

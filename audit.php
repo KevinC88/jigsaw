@@ -6,9 +6,10 @@
        die("Redirecting to index.php"); 
    }
    ?>
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
-   <head>
+  <head>
 <title></title>
     
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -19,23 +20,35 @@
 
 <script src="https://cdn.dataTables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+      
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-2.2.4/pdfmake-0.1.18/dt-1.10.13/b-1.2.4/b-colvis-1.2.4/b-html5-1.2.4/b-print-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.1/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-2.2.4/pdfmake-0.1.18/dt-1.10.13/b-1.2.4/b-colvis-1.2.4/b-html5-1.2.4/b-print-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/r-2.1.1/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.js"></script>
     
-    
+<script type="text/javascript" src="dataTables.filter.html.js"></script>
+ <script type="text/javascript" src="dataTables.filter.range.js"></script>
+      
+<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"> </script>
+      
+      <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.24/build/pdfmake.min.js"> </script>
+      
+      
      <script src="css/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/helpful.css" rel="stylesheet">
-   <link rel="stylesheet" type="text/css" href="css/projectstyle.css">
+    <link rel="stylesheet" type="text/css" href="css/projectstyle.css">
 
 </head>
-<body>
-    <?php
+   <body>
+       
+                <?php
   $server = mysql_connect("localhost", "root", ""); 
   $db = mysql_select_db("test-login", $server); 
-  $query = mysql_query("SELECT patientsNumber, patientsFirstName, patientsLastName FROM patientRecord GROUP BY patientsNumber");
+  $query = mysql_query("SELECT patientsNumber, patientsFirstName, patientsLastName,prescribingPsych,dosageDate,drugSelect,dosage,frequency FROM patientRecord WHERE Status = 'NO'");
 ?>
-	<div class="page-container">
+ <div class="page-container">
   
 	<!-- top navbar -->
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -55,7 +68,7 @@
       <div class="row row-offcanvas row-offcanvas-left">
         
         <!-- sidebar -->
-        <div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+       <div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav">
               <li class="active"><a href="dashboard.php">Dashboard</a></li>
               <li><a href="secret.php">Add Patient</a></li>
@@ -93,27 +106,29 @@
 					</li>
             </ul>
         </div>
-  	
         <!-- main area -->
         <div class="col-sm-10 central buffer">
-                   <div class="panel panel-default panel-transparent">
+          
+
+            
+            					
+                            <div class="panel panel-default panel-transparent">
   <div class="panel-heading">
-    <h4 class="panel-title">Patient Details</h4>
+    <h4 class="panel-title">Audit Table - dosage guideline exceptions</h4>
   </div>
   <div class="panel-body">
-	
-				<div class="col-md-12">
-					<div class="row">
-						<div class="col-md-12">
-                 
 							<div class="table-repsonsive">
-<table id="patient_data" class="table table-bordered pretty" cellpadding="0" cellspacing = "0" data-page-length='5'>
+<table id="audit_data" class="table table-bordered pretty" cellpadding="0" cellspacing = "0" data-page-length='5'>
 <thead>
 <tr>
-                <th>Patient's Number</th>
+                      <th>Patient's Number</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-            
+    <th>Prescribing Psychiatrist</th>
+                <th>Dosage Date</th>
+                <th>Medication</th>
+    <th>Dosage</th>
+    <th>Frequency</th>
 </tr>
 </thead>
   <?php
@@ -122,7 +137,13 @@
                    <td><?php echo $row['patientsNumber'];?></td>
                    <td><?php echo $row['patientsFirstName'];?></td>
                    <td><?php echo $row['patientsLastName'];?></td>
-                 
+                       <td><?php echo $row['prescribingPsych'];?></td>
+                   <td><?php echo $row['dosageDate'];?></td>
+                   <td><?php echo $row['drugSelect'];?></td>
+                       <td><?php echo $row['dosage'];?></td>
+                   <td><?php echo $row['frequency'];?></td>
+                   
+                   
                    </tr>
               <?php  } ?>
 </table>
@@ -130,66 +151,11 @@
                                 </div>
                             </div>
                             
-						</div>
-                       </div>
-            </div>
-             <div class="panel panel-default panel-transparent">
-  <div class="panel-heading">
-    <h4 class="panel-title">Glucose</h4>
-  </div>
-  <div class="panel-body">
 						
-							<form action="inputG.php" class="form-horizontal" id="contactForm" method="post" name="contactForm" role="form">
-								<fieldset>
-									
-									<div class="form-group form-group-sm">
-                                        <div class="col-xs-3">
-										<label for="patientsNumbInput">Patient No.:</label>
-											<input autocomplete="off" class="form-control" id="patientsNumber" name="patientsNumber" placeholder="patient number" required="" type="text" readonly="readonly">
-										</div>
-								
-                                <div class="col-xs-3">
-										<label for="patientsFirstNameInput">First Name:</label>
-										
-											<input autocomplete="off" class="form-control" id="patientsFirstName" name="patientsFirstName" placeholder="first name" readonly required="" type="text">
-										</div>
-                                
-                                <div class="col-xs-3">
-                                <label for="patientLastNameInput">Last Name:</label>
-										
-											<input autocomplete="off" class="form-control" id="patientsLastName" name="patientsLastName" placeholder="last name" readonly required="" type="text">
-										</div>
-                                    </div>
-  <div class="form-group form-group-sm">                                  
-<div class="col-xs-3">
-<label for="glucose">Glucose:</label>
-
-<input autocomplete="off" class="form-control" id="glucose" name="glucose" placeholder="Glucose levels" required="" type="number" step="0.1">
-</div>
-</div>
-                                    
-                                    
-    
-                                    
-                                          <div>        
-                                    <input name="Record" class="form-control input-md" id="Record" value="Glucose" required="" type="hidden" >
-                                 </div>
-                                    	      
-                                    
-                                    
-                                    
-									<div class="form-group form-group-sm">
-                                        <div class="col-xs-3">
-											<button class="btn btn-primary" id="submit" name="submit" type="submit">Add Glucose Levels</button>
-										</div>
-									</div>
-                                    
-								</fieldset>
-							</form>
-						</div>
-            </div>
+                        
+                
           
-	   </div><!-- /.col-xs-12 main -->
+        </div><!-- /.col-xs-12 main -->
     </div><!--/.row-->
   </div><!--/.container-->
 </div><!--/.page-container-->
@@ -210,18 +176,21 @@
   });
 });
         </script>
-	
-</body>
+   </body>
 </html>
 
-<script>
+ <script>
 $(document).ready(function() {
-	var table = $('#patient_data').DataTable({
-	 "autoWidth": false,
+	var table = $('#audit_data').DataTable({
+       
+        
+        
+        "autoWidth": false,
        fixedHeader: true,
        "paging":   true,
        "bInfo" : false,
        fixedHeader: true
+       
 	});
 });
     

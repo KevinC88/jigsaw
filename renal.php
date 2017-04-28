@@ -26,24 +26,7 @@
     
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/helpful.css" rel="stylesheet">
-   <style type="text/css">
-        body { background: url(css/bglight.png); }
-        .center { display: block; margin: 0 auto; }
-        tr.group,
-tr.group:hover {
-    background-color: #ddd !important;
-}
-} 
-   table{
-  margin: 0 auto;     
-  width: 100%;
-  clear: both;
-  border-collapse: collapse;
-  table-layout: fixed; 
-  word-wrap:break-word; 
-}     
-       
-    </style>
+   <link rel="stylesheet" type="text/css" href="css/projectstyle.css">
 
 </head>
 <body>
@@ -64,7 +47,7 @@ tr.group:hover {
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="#">Project Name</a>
+           <a class="navbar-brand" href="#">Jigsaw medical</a>
     	</div>
        </div>
     </div>
@@ -73,7 +56,7 @@ tr.group:hover {
       <div class="row row-offcanvas row-offcanvas-left">
         
         <!-- sidebar -->
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav">
               <li class="active"><a href="dashboard.php">Dashboard</a></li>
               <li><a href="secret.php">Add Patient</a></li>
@@ -104,22 +87,8 @@ tr.group:hover {
 							</li>
 						</ul>
 					</li>
-                <li><a href="medications.php">Medication History</a></li>
-               <li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="">Medical Investigations <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="physical.php">Physical Exam</a>
-							</li>
-							<li>
-								<a href="ecg.php">ECG</a>
-							</li>
-                            <li>
-								<a href="ctmri.php">CT/MRI</a>
-							</li>
-						</ul>
-					</li>
-                <li><a href="graphs.php">Patient Graphs</a></li>
+                <li><a href="medLog.php">Medication History</a></li>
+                <li><a href="auditLog.php">Audit Records</a></li>
                 <li>
 						<a href="logout.php">Log Out</a>
 					</li>
@@ -127,24 +96,24 @@ tr.group:hover {
         </div>
   	
         <!-- main area -->
-        <div class="col-xs-12 col-sm-9">
-          
+        <div class="col-sm-10 central buffer">
+                          <div class="panel panel-default panel-transparent">
+  <div class="panel-heading">
+    <h4 class="panel-title">Patient Details</h4>
+  </div>
+  <div class="panel-body">
     
               <div class="col-md-12">
 					<div class="row">
 						<div class="col-md-12">
-                            <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Panel title</h3>
-  </div>
-  <div class="panel-body">
+             
 							<div class="table-repsonsive">
-<table id="patient_data" class="table table-bordered" data-page-length='5'>
+<table id="patient_data" class="table table-bordered pretty" cellpadding="0" cellspacing = "0" data-page-length='5'>
 <thead>
 <tr>
-                <td>Patient's Number</td>
-                <td>First Name</td>
-                <td>Last Name</td>
+    <th>Patient's Number</th>
+                <th>First Name</th>
+    <th>Last Name</th>
 </tr>
 </thead>
   <?php
@@ -161,48 +130,53 @@ tr.group:hover {
                             </div>
                             
 						</div>
-						<div class="col-md-12" style='background-color: #2ba6cb;'>
+                  </div>
+      </div>
+                              
+            
+					                <div class="panel panel-default panel-transparent">
+  <div class="panel-heading">
+    <h4 class="panel-title">Renal</h4>
+  </div>
+  <div class="panel-body">
 							<form action="inputRenal.php" class="form-horizontal" id="contactForm" method="post" name="contactForm" role="form">
 								<fieldset>
-									<legend>Renal Profile</legend>
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="patientsNumbInput">Patient No.:</label>
-										<div class="col-md-6">
-											<input autocomplete="off" class="form-control input-md" id="patientsNumber" name="patientsNumber" placeholder="patient number" required="" type="text" readonly="readonly">
-										</div>
+				
+									<div class="form-group form-group-sm">
+                                        <div class="col-xs-3">
+										<label for="patientsNumbInput">Patient No.:</label>
+											<input autocomplete="off" class="form-control" id="patientsNumber" name="patientsNumber" placeholder="patient number" required="" type="text" readonly="readonly">
+                                        </div>
+									
+                                    <div class="col-xs-3">
+										<label for="patientsFirstNameInput">First Name:</label>
+											<input autocomplete="off" class="form-control" id="patientsFirstName" name="patientsFirstName" placeholder="first name" readonly required="" type="text">
+                                        </div>
+                                        <div class="col-xs-3">
+                                        <label for="patientLastNameInput">Last Name:</label>
+											<input autocomplete="off" class="form-control" id="patientsLastName" name="patientsLastName" placeholder="last name" readonly required="" type="text">
+                                        </div>
 									</div>
                                     
-                                    <div class="form-group">
-										<label class="col-md-1 control-label" for="patientsFirstNameInput">First Name:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="patientsFirstName" name="patientsFirstName" placeholder="first name" readonly required="" type="text">
-										</div><label class="col-md-1 control-label" for="patientLastNameInput">Last Name:</label>
-										<div class="col-md-4">
-											<input autocomplete="off" class="form-control input-md" id="patientsLastName" name="patientsLastName" placeholder="last name" readonly required="" type="text">
+                                    	<div class="form-group form-group-sm">
+                                            <div class="col-xs-3">
+										<label for="Sodium">Sodium:</label>
+										
+											<input autocomplete="off" class="form-control" id="Sodium" name="Sodium" placeholder="Sodium levels" required="" type="number" step="0.1">
 										</div>
-									</div>
+                                            <div class="col-xs-3">
+                                            <label for="Potassium">Potassium:</label>
+											<input autocomplete="off" class="form-control" id="Potassium" name="Potassium" placeholder="Potassium levels" required="" type="number" step="0.1">
+										</div>
                                     
-                                    	<div class="form-group">
-										<label class="col-md-3 control-label" for="Sodium">Sodium:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Sodium" name="Sodium" placeholder="Sodium levels" required="" type="text">
+                                    	<div class="col-xs-3">
+										<label for="Urea">Urea:</label>
+											<input autocomplete="off" class="form-control" id="Urea" name="Urea" placeholder="Urea levels" required="" type="number" step="0.1">
 										</div>
-                                            
-                                            <label class="col-md-3 control-label" for="Potassium">Potassium:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Potassium" name="Potassium" placeholder="Potassium levels" required="" type="text">
-										</div>
-									</div>
-                                    
-                                    	<div class="form-group">
-										<label class="col-md-3 control-label" for="Urea">Urea:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Urea" name="Urea" placeholder="Urea levels" required="" type="text">
-										</div>
-                                            
-                                            <label class="col-md-3 control-label" for="Creatinine">Creatinine:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Creatinine" name="Creatinine" placeholder="Creatinine levels" required="" type="text">
+                                            <div class="col-xs-3">
+                                            <label for="Creatinine">Creatinine:</label>
+										
+											<input autocomplete="off" class="form-control" id="Creatinine" name="Creatinine" placeholder="Creatinine levels" required="" type="number" step="0.1">
 										</div>
                                             
 									</div>
@@ -215,24 +189,25 @@ tr.group:hover {
                                     
                                     
                                     
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="addRenalBtn"></label>
+									<div class="form-group form-group-sm">
+                                        <div class="col-xs-3">
+										<label for="addRenalBtn"></label>
 										<div class="col-md-4">
 											<button class="btn btn-primary" id="submit" name="submit" type="submit">Add Renal Profile</button>
 										</div>
 									</div>
+                                    </div>
 								</fieldset>
 							</form>
-						</div>
 						
-					</div>
-				</div>
-		  
-          
-        </div><!-- /.col-xs-12 main -->
-    </div><!--/.row-->
-  </div><!--/.container-->
-</div><!--/.page-container-->
+                                        </div>
+        </div>
+					
+          </div>
+        </div>
+         </div>
+    </div>
+    
     
 
   <script>
@@ -249,9 +224,10 @@ tr.group:hover {
 $(document).ready(function() {
 	var table = $('#patient_data').DataTable({
 		 "autoWidth": false,
-        dom: 'Bfrtip',
        fixedHeader: true,
-       "paging":   false,
+       "paging":   true,
+       "bInfo" : false,
+       fixedHeader: true
 	});
 });
     

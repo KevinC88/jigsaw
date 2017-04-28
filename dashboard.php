@@ -31,37 +31,8 @@
     
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/helpful.css" rel="stylesheet">
-    <style type="text/css">
-        body { background: url(css/bglight.png); }
-        .center { display: block; margin: 0 auto; }
-    </style>
-       <style> /* set the CSS */
- 
-body { font: 12px Arial;}
- 
-path { 
-  stroke: steelblue;
-  stroke-width: 2;
-  fill: none;
-}
- 
-.axis path,
-.axis line {
-	fill: none;
-	stroke: grey;
-	stroke-width: 1;
-	shape-rendering: crispEdges;
-}
- 
-</style>
-       
-       <style>
-           .chart-container {
-               width:640px;
-               height: 600px;
-           }
-       </style>
-       
+
+     <link rel="stylesheet" type="text/css" href="css/projectstyle.css">  
     
 
 </head>
@@ -77,7 +48,7 @@ path {
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="#">Project Name</a>
+           <a class="navbar-brand" href="#">Jigsaw medical</a>
     	</div>
        </div>
     </div>
@@ -86,7 +57,7 @@ path {
       <div class="row row-offcanvas row-offcanvas-left">
         
         <!-- sidebar -->
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
             <ul class="nav">
               <li class="active"><a href="dashboard.php">Dashboard</a></li>
               <li><a href="secret.php">Add Patient</a></li>
@@ -117,22 +88,8 @@ path {
 							</li>
 						</ul>
 					</li>
-                <li><a href="medications.php">Medication History</a></li>
-               <li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="">Medical Investigations <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="physical.php">Physical Exam</a>
-							</li>
-							<li>
-								<a href="ecg.php">ECG</a>
-							</li>
-                            <li>
-								<a href="ctmri.php">CT/MRI</a>
-							</li>
-						</ul>
-					</li>
-                <li><a href="graphs.php">Patient Graphs</a></li>
+                <li><a href="medLog.php">Medication History</a></li>
+                <li><a href="auditLog.php">Audit Records</a></li>
                 <li>
 						<a href="logout.php">Log Out</a>
 					</li>
@@ -140,44 +97,40 @@ path {
         </div>
   	
         <!-- main area -->
-        <div class="col-xs-12 col-sm-9">
+         
+        <div class="col-sm-10 central buffer">
           
-           
- <?php
- 
-//Connect to our MySQL database using the PDO extension.
-$pdo = new PDO('mysql:host=localhost;dbname=test-login', 'root', '');
- 
-//Our select statement. This will retrieve the data that we want.
-$sql = "SELECT patientsNumber FROM patientRecord GROUP BY patientsNumber";
- 
-//Prepare the select statement.
-$stmt = $pdo->prepare($sql);
- 
-//Execute the statement.
-$stmt->execute();
- 
-//Retrieve the rows using fetchAll.
-$users = $stmt->fetchAll();
- 
-?>
- <form action="data.php" method="post"  onchange="myFunction()">
-<select name="pGraph" id="pGraph">
-    <?php foreach($users as $user): ?>
-        <option value="<?= $user['patientsNumber']; ?>"><?= $user['patientsNumber']; ?></option>
-    <?php endforeach; ?>
-</select>
-</form>
+ <div class="panel panel-default panel-transparent">
+  <div class="panel-heading">
+    Charts
+  </div>
+  <div class="panel-body">
 
             
-    <input type="button" value="refresh" onclick="refresh()">   
-  <div class="chart-container">
+    
+  <div class="chart-container col-xs-4 col-sm-4">
             <canvas id="myCanvas"></canvas>
-            </div>          
+      
+   </div>
+          
+    <div class="col-xs-1 col-sm-1"> 
+    </div>
+            
+            
+           
+    <div class="chart-container col-xs-4 col-sm-4">
+            <canvas id="myCanvas2"></canvas>
+      
+    </div>  
+            
+            
+     </div>
+            </div>
             
              
         </div><!-- /.col-xs-12 main -->
-    </div><!--/.row-->
+          </div>
+    
   </div><!--/.container-->
 </div><!--/.page-container-->
       
@@ -199,6 +152,7 @@ $users = $stmt->fetchAll();
     
         <script type="text/javascript" src="js/Chart.min.js"></script>
        <script type="text/javascript" src="js/linegraph.js"></script>
+       <script type="text/javascript" src="js/linegraph2.js"></script>
        
    </body>
 </html>

@@ -39,8 +39,8 @@ $fbc = "INSERT INTO patientRecord
 $result = mysql_query($fbc);
 
 if($result){
-
-    echo("<br>Input data is succeed");
+header("Location: dashboard.php");
+    
 
 } else{
 

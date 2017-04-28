@@ -11,6 +11,8 @@ mysql_select_db("$database");
 
 
 $patientsNumber =$_POST['patientsNumber'];
+$patientsFirstName =$_POST['patientsFirstName'];
+$patientsLastName =$_POST['patientsLastName'];
 $Sodium =$_POST['Sodium'];
 $Potassium =$_POST['Potassium'];
 $Urea =$_POST['Urea'];
@@ -21,11 +23,11 @@ $Record =$_POST['Record'];
 
 $renal = "INSERT INTO patientrecord
 
-        (patientsNumber,Sodium,Potassium,Urea,Creatinine,Record)
+        (patientsNumber,patientsFirstName,patientsLastName,Sodium,Potassium,Urea,Creatinine,Record)
 
         VALUES
 
-        ('".$patientsNumber."','".$Sodium."','".$Potassium."','".$Urea."','".$Creatinine."','".$Record."')";
+        ('".$patientsNumber."','".$patientsFirstName."','".$patientsLastName."','".$Sodium."','".$Potassium."','".$Urea."','".$Creatinine."','".$Record."')";
 
 
 $result = mysql_query($renal);

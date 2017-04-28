@@ -62,11 +62,7 @@
     <script src="js/jquery.js"></script>
     <script src="css/bootstrap.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <style type="text/css">
-        body { background: url(css/bglight.png); }
-        .hero-unit { background-color: #fff; }
-        .center { display: block; margin: 0 auto; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/projectstyle.css">
 </head>
 
 <body>
@@ -79,10 +75,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand">Project name</a>
+      <a class="brand">Jigsaw medical</a>
       <div class="nav-collapse collapse">
         <ul class="nav pull-right">
-          <li><a href="register.php">Register</a></li>
           <li class="divider-vertical"></li>
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Log In <strong class="caret"></strong></a>
@@ -104,9 +99,46 @@
   </div>
 </div>
 
-<div class="container hero-unit">
-   
-</div>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+ 
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="img/indexpic.jpg" alt="...">
+     
+    </div>
+    <div class="item">
+      <img src="img/indexppic1.jpg" alt="...">
+      
+    </div>
+    <div class="item">
+      <img src="img/indexpic2.jpg" alt="...">
+     
+    </div>
+  </div>
+ 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> <!-- Carousel -->
 
 </body>
+    
+    <script language="Javascript" type="text/javascript">
+    $(document).ready(function(){
+       $('.carousel').carousel({
+           interval: 3500
+       }) 
+    });
+    </script>
 </html>

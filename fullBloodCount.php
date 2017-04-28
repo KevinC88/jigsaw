@@ -24,24 +24,7 @@
 	<link href="css/bootstrap.min.css" media="screen" rel="stylesheet">
 	<link href="css/simple-sidebar.css" rel="stylesheet">
 	<link href="css/helpful.css" rel="stylesheet">
-	 <style type="text/css">
-        body { background: url(css/bglight.png); }
-        .center { display: block; margin: 0 auto; }
-        tr.group,
-tr.group:hover {
-    background-color: #ddd !important;
-}
-} 
-   table{
-  margin: 0 auto;     
-  width: 100%;
-  clear: both;
-  border-collapse: collapse;
-  table-layout: fixed; 
-  word-wrap:break-word; 
-}     
-       
-    </style>
+	 <link rel="stylesheet" type="text/css" href="css/projectstyle.css">
 </head>
 <body>
 	<?php
@@ -55,102 +38,67 @@ tr.group:hover {
 		<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
-					<button class="navbar-toggle" data-target=".sidebar-nav" data-toggle="offcanvas" type="button"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Project Name</a>
+					<button class="navbar-toggle" data-target=".sidebar-nav" data-toggle="offcanvas" type="button"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Jigsaw medical</a>
 				</div>
 			</div>
 		</div>
 		<div class="container">
 			<div class="row row-offcanvas row-offcanvas-left">
 				<!-- sidebar -->
-				<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-					<ul class="nav">
-						<li class="active">
-							<a href="dashboard.php">Dashboard</a>
-						</li>
-						<li>
-							<a href="secret.php">Add Patient</a>
-						</li>
-						<li>
-							<a href="patientTable.php">View Patient Records</a>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Standard blood Tests <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="fullBloodCount.php">Full blood count</a>
-								</li>
-								<li>
-									<a href="renal.php">Renal profile</a>
-								</li>
-								<li>
-									<a href="liver.php">Liver profile</a>
-								</li>
-								<li>
-									<a href="Lipids.php">Lipid profile</a>
-								</li>
-								<li>
-									<a href="thyroid.php">Thyroid function tests</a>
-								</li>
-								<li>
-									<a href="glucose.php">Glucose</a>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Monitoring blood Tests <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="lithium.php">Lithium levels</a>
-								</li>
-								<li>
-									<a href="sodiumV.php">Sodium Valproate levels</a>
-								</li>
-								<li>
-									<a href="clozapine.php">Clozapine levels</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="medications.php">Medication History</a>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="">Medical Investigations <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="physical.php">Physical Exam</a>
-								</li>
-								<li>
-									<a href="ecg.php">ECG</a>
-								</li>
-								<li>
-									<a href="ctmri.php">CT/MRI</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="graphs.php">Patient Graphs</a>
-						</li>
-						<li>
-							<a href="logout.php">Log Out</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-9">
+			<div class="col-sm-2 sidebar-offcanvas" id="sidebar" role="navigation">
+            <ul class="nav">
+              <li class="active"><a href="dashboard.php">Dashboard</a></li>
+              <li><a href="secret.php">Add Patient</a></li>
+              <li><a href="patientTable.php">View Patient Records</a></li>
+              
+               <li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Standard blood Tests <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+          <li><a href="fullBloodCount.php">Full blood count</a></li>
+          <li><a href="renal.php">Renal profile</a></li>
+          <li><a href="liver.php">Liver profile</a></li>
+            <li><a href="Lipids.php">Lipid profile</a></li>
+            <li><a href="thyroid.php">Thyroid function tests</a></li>
+            <li><a href="glucose.php">Glucose</a></li>
+        </ul>
+					</li> 
+                <li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Monitoring blood Tests <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="lithium.php">Lithium levels</a>
+							</li>
+							<li>
+								<a href="sodiumV.php">Sodium Valproate levels</a>
+							</li>
+							<li>
+								<a href="clozapine.php">Clozapine levels</a>
+							</li>
+						</ul>
+					</li>
+                <li><a href="medLog.php">Medication History</a></li>
+                <li><a href="auditLog.php">Audit Records</a></li>
+                <li>
+						<a href="logout.php">Log Out</a>
+					</li>
+            </ul>
+        </div>
+				<div class="col-sm-10 central buffer">
 					<div class="col-md-12">
 						<div class="row">
 							<div class="col-md-12">
-								<div class="panel panel-default">
+								<div class="panel panel-default panel-transparent">
 									<div class="panel-heading">
-										<h3 class="panel-title">Patient Details</h3>
+										<h4 class="panel-title">Patient Details</h4>
 									</div>
 									<div class="panel-body">
 										<div class="table-repsonsive">
-											<table class="table table-bordered" data-page-length='5' id="patient_data">
+											<table class="table table-bordered pretty" cellpadding="0" cellspacing = "0" data-page-length='5' id="patient_data">
 												<thead>
 													<tr>
-														<td>Patients Number</td>
-														<td>Patients First Name</td>
-														<td>Patients Last Name</td>
+														<th>Patients Number</th>
+														<th>Patients First Name</th>
+														<th>Patients Last Name</th>
 													</tr>
 												</thead><?php
 												                                                                                                               while ($row = mysql_fetch_array($query)) {?>
@@ -165,83 +113,104 @@ tr.group:hover {
 								</div>
 							</div>
 						</div>
-						<div class="col-md-12" style='background-color: #2ba6cb;'>
+                        
+						<div class="panel panel-default panel-transparent">
+  <div class="panel-heading">
+    <h4 class="panel-title">Full Blood Count</h4>
+  </div>
+  <div class="panel-body">
 							<form action="inputFBC.php" class="form-horizontal" id="contactForm" method="post" name="contactForm" role="form">
 								<fieldset>
-									<legend>Full Blood Count</legend>
-									<div class="form-group">
-										<label class="col-md-6 control-label" for="patientsNumbInput">Patient No.:</label>
-										<div class="col-md-6">
-											<input autocomplete="off" class="form-control input-md" id="patientsNumber" name="patientsNumber" placeholder="patient number" readonly required="" type="text">
+									
+									<div class="form-group form-group-sm">
+                                        <div class="col-xs-3">
+										<label for="patientsNumbInput">Patient No.:</label>
+											<input autocomplete="off" class="form-control" id="patientsNumber" name="patientsNumber" placeholder="patient number" readonly required="" type="text">
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-1 control-label" for="patientsFirstNameInput">First Name:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="patientsFirstName" name="patientsFirstName" placeholder="first name" readonly required="" type="text">
-										</div><label class="col-md-1 control-label" for="patientLastNameInput">Last Name:</label>
-										<div class="col-md-4">
-											<input autocomplete="off" class="form-control input-md" id="patientsLastName" name="patientsLastName" placeholder="last name" readonly required="" type="text">
+									
+									<div class="col-xs-3">
+										<label for="patientsFirstNameInput">First Name:</label>
+											<input autocomplete="off" class="form-control" id="patientsFirstName" name="patientsFirstName" placeholder="first name" readonly required="" type="text">
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="Haemoglobin">Haemoglobin:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Haemoglobin" name="Haemoglobin" placeholder="Haemoglobin levels" required="" type="text">
-										</div><label class="col-md-3 control-label" for="Platelets">Platelets:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Platelets" name="Platelets" placeholder="Platelet levels" required="" type="text">
+                                        <div class="col-xs-3">
+                                        <label for="patientLastNameInput">Last Name:</label>
+											<input autocomplete="off" class="form-control" id="patientsLastName" name="patientsLastName" placeholder="last name" readonly required="" type="text">
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="WhiteCells">WhiteCells:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="WhiteCells" name="WhiteCells" placeholder="White cell levels" required="" type="text">
-										</div><label class="col-md-3 control-label" for="MCH">MCH:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="MCH" name="MCH" placeholder="MCH levels" required="" type="text">
+									
+                                        <div class="col-xs-3">
+										<label for="Haemoglobin">Haemoglobin:</label>
+											<input autocomplete="off" class="form-control" id="Haemoglobin" name="Haemoglobin" placeholder="Haemoglobin levels" required="" type="number" step="0.1">
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                    <div class="form-group form-group-sm">
+                                            <div class="col-xs-3">
+										<label for="Platelets">Platelets:</label>
+										<input autocomplete="off" class="form-control" id="Platelets" name="Platelets" placeholder="Platelet levels" required="" type="number" step="0.1">
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="HCT">HCT:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="HCT" name="HCT" placeholder="HCT levels" required="" type="text">
-										</div><label class="col-md-3 control-label" for="MCV">MCV:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="MCV" name="MCV" placeholder="MCV levels" required="" type="text">
+									
+                                            <div class="col-xs-3">
+										<label for="WhiteCells">WhiteCells:</label>
+											<input autocomplete="off" class="form-control" id="WhiteCells" name="WhiteCells" placeholder="White cell levels" required="" type="number" step="0.1">
+                                            </div>
+                                            
+                                    
+                                        <div class="col-xs-3">
+                                            <label for="MCH">MCH:</label>
+											<input autocomplete="off" class="form-control" id="MCH" name="MCH" placeholder="MCH levels" required="" type="number" step="0.1">
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="Neuts">Neuts:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Neuts" name="Neuts" placeholder="Neut levels" required="" type="text">
-										</div><label class="col-md-3 control-label" for="Lymphs">Lymphs:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Lymphs" name="Lymphs" placeholder="Lymph levels" required="" type="text">
+									<div class="col-xs-3">
+										<label for="HCT">HCT:</label>
+											<input autocomplete="off" class="form-control" id="HCT" name="HCT" placeholder="HCT levels" required="" type="number" step="0.1">
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="Eosins">Eosins:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Eosins" name="Eosins" placeholder="Eosin levels" required="" type="text">
-										</div><label class="col-md-3 control-label" for="Mono">Mono:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Mono" name="Mono" placeholder="Mono levels" required="" type="text">
+                                    </div>
+                                        
+                                        <div class="form-group form-group-sm">
+                                        
+                                        <div class="col-xs-3">
+                                        <label for="MCV">MCV:</label>
+											<input autocomplete="off" class="form-control" id="MCV" name="MCV" placeholder="MCV levels" required="" type="number" step="0.1">
 										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-md-3 control-label" for="Basos">Basos:</label>
-										<div class="col-md-3">
-											<input autocomplete="off" class="form-control input-md" id="Basos" name="Basos" placeholder="Basos levels" required="" type="text">
+									
+                                        <div class="col-xs-3">
+                                            <label for="Neuts">Neuts:</label>
+											<input autocomplete="off" class="form-control" id="Neuts" name="Neuts" placeholder="Neut levels" required="" type="number" step="0.1">
 										</div>
-									</div>
+                                        
+                                        <div class="col-xs-3">
+                                        <label for="Lymphs">Lymphs:</label>
+											<input autocomplete="off" class="form-control" id="Lymphs" name="Lymphs" placeholder="Lymph levels" required="" type="number" step="0.1">
+										</div>
+                                        
+                                        <div class="col-xs-3">
+										<label for="Eosins">Eosins:</label>
+											<input autocomplete="off" class="form-control" id="Eosins" name="Eosins" placeholder="Eosin levels" required="" type="number" step="0.1">
+										</div>
+                                    </div>
+                                        
+                                    
+                                        
+                                        <div class="form-group form-group-sm">
+                                            <div class="col-xs-3">
+                                        <label for="Mono">Mono:</label>
+											<input autocomplete="off" class="form-control" id="Mono" name="Mono" placeholder="Mono levels" required="" type="number" step="0.1">
+										</div>
+									
+                                             <div class="col-xs-3">
+										<label for="Basos">Basos:</label>
+											<input autocomplete="off" class="form-control" id="Basos" name="Basos" placeholder="Basos levels" required="" type="number" step="0.1">
+										</div>
+                                    </div>
+                                    
+                                    
 									<div>
 										<input class="form-control input-md" id="Record" name="Record" required="" type="hidden" value="FBC">
 									</div>
-									<div class="form-group">
-										<label class="col-md-4 control-label" for="addFBCBtn"></label>
-										<div class="col-md-4">
-											<button class="btn btn-primary" id="submit" name="submit" type="submit">Add FBC Record</button>
+									
+                                        <div class="col-xs-3">
+										<label for="addFBCBtn"></label>
+											<button class="btn btn-primary btn-block" id="submit" name="submit" type="submit">Add FBC Record</button>
 										</div>
 									</div>
 								</fieldset>
@@ -252,6 +221,8 @@ tr.group:hover {
 			</div>
 		</div>
 	</div>
+    </div>
+    
 </body>
 </html>
 <script>
@@ -259,10 +230,10 @@ tr.group:hover {
     
 $(document).ready(function() {
 	var table = $('#patient_data').DataTable({
-		 "autoWidth": false,
-        dom: 'Bfrtip',
+		  "autoWidth": false,
        fixedHeader: true,
-       "paging":   false,
+       "paging":   true,
+       "bInfo" : false,
 	});
 });
 
